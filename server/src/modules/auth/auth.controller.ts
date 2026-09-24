@@ -109,7 +109,7 @@ export async function login(
       {
         httpOnly: true,
         secure: isProduction,
-        sameSite: "lax",
+        sameSite: isProduction ? "none" : "lax",
         path: "/",
         maxAge: 1000 * 60 * 60 * 24 * 7,
       },
