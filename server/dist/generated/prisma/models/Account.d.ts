@@ -1,0 +1,2541 @@
+import type * as runtime from "@prisma/client/runtime/client";
+import type * as $Enums from "../enums.js";
+import type * as Prisma from "../internal/prismaNamespace.js";
+/**
+ * Model Account
+ *
+ */
+export type AccountModel = runtime.Types.Result.DefaultSelection<Prisma.$AccountPayload>;
+export type AggregateAccount = {
+    _count: AccountCountAggregateOutputType | null;
+    _avg: AccountAvgAggregateOutputType | null;
+    _sum: AccountSumAggregateOutputType | null;
+    _min: AccountMinAggregateOutputType | null;
+    _max: AccountMaxAggregateOutputType | null;
+};
+export type AccountAvgAggregateOutputType = {
+    balance: runtime.Decimal | null;
+};
+export type AccountSumAggregateOutputType = {
+    balance: runtime.Decimal | null;
+};
+export type AccountMinAggregateOutputType = {
+    id: string | null;
+    userId: string | null;
+    accountNumber: string | null;
+    type: $Enums.AccountType | null;
+    status: $Enums.AccountStatus | null;
+    currency: string | null;
+    balance: runtime.Decimal | null;
+    createdAt: Date | null;
+    updatedAt: Date | null;
+};
+export type AccountMaxAggregateOutputType = {
+    id: string | null;
+    userId: string | null;
+    accountNumber: string | null;
+    type: $Enums.AccountType | null;
+    status: $Enums.AccountStatus | null;
+    currency: string | null;
+    balance: runtime.Decimal | null;
+    createdAt: Date | null;
+    updatedAt: Date | null;
+};
+export type AccountCountAggregateOutputType = {
+    id: number;
+    userId: number;
+    accountNumber: number;
+    type: number;
+    status: number;
+    currency: number;
+    balance: number;
+    createdAt: number;
+    updatedAt: number;
+    _all: number;
+};
+export type AccountAvgAggregateInputType = {
+    balance?: true;
+};
+export type AccountSumAggregateInputType = {
+    balance?: true;
+};
+export type AccountMinAggregateInputType = {
+    id?: true;
+    userId?: true;
+    accountNumber?: true;
+    type?: true;
+    status?: true;
+    currency?: true;
+    balance?: true;
+    createdAt?: true;
+    updatedAt?: true;
+};
+export type AccountMaxAggregateInputType = {
+    id?: true;
+    userId?: true;
+    accountNumber?: true;
+    type?: true;
+    status?: true;
+    currency?: true;
+    balance?: true;
+    createdAt?: true;
+    updatedAt?: true;
+};
+export type AccountCountAggregateInputType = {
+    id?: true;
+    userId?: true;
+    accountNumber?: true;
+    type?: true;
+    status?: true;
+    currency?: true;
+    balance?: true;
+    createdAt?: true;
+    updatedAt?: true;
+    _all?: true;
+};
+export type AccountAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Filter which Account to aggregate.
+     */
+    where?: Prisma.AccountWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Accounts to fetch.
+     */
+    orderBy?: Prisma.AccountOrderByWithRelationInput | Prisma.AccountOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: Prisma.AccountWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Accounts from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Accounts.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned Accounts
+    **/
+    _count?: true | AccountCountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to average
+    **/
+    _avg?: AccountAvgAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to sum
+    **/
+    _sum?: AccountSumAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+    **/
+    _min?: AccountMinAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+    **/
+    _max?: AccountMaxAggregateInputType;
+};
+export type GetAccountAggregateType<T extends AccountAggregateArgs> = {
+    [P in keyof T & keyof AggregateAccount]: P extends '_count' | 'count' ? T[P] extends true ? number : Prisma.GetScalarType<T[P], AggregateAccount[P]> : Prisma.GetScalarType<T[P], AggregateAccount[P]>;
+};
+export type AccountGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.AccountWhereInput;
+    orderBy?: Prisma.AccountOrderByWithAggregationInput | Prisma.AccountOrderByWithAggregationInput[];
+    by: Prisma.AccountScalarFieldEnum[] | Prisma.AccountScalarFieldEnum;
+    having?: Prisma.AccountScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: AccountCountAggregateInputType | true;
+    _avg?: AccountAvgAggregateInputType;
+    _sum?: AccountSumAggregateInputType;
+    _min?: AccountMinAggregateInputType;
+    _max?: AccountMaxAggregateInputType;
+};
+export type AccountGroupByOutputType = {
+    id: string;
+    userId: string;
+    accountNumber: string;
+    type: $Enums.AccountType;
+    status: $Enums.AccountStatus;
+    currency: string;
+    balance: runtime.Decimal;
+    createdAt: Date;
+    updatedAt: Date;
+    _count: AccountCountAggregateOutputType | null;
+    _avg: AccountAvgAggregateOutputType | null;
+    _sum: AccountSumAggregateOutputType | null;
+    _min: AccountMinAggregateOutputType | null;
+    _max: AccountMaxAggregateOutputType | null;
+};
+export type GetAccountGroupByPayload<T extends AccountGroupByArgs> = Prisma.PrismaPromise<Array<Prisma.PickEnumerable<AccountGroupByOutputType, T['by']> & {
+    [P in ((keyof T) & (keyof AccountGroupByOutputType))]: P extends '_count' ? T[P] extends boolean ? number : Prisma.GetScalarType<T[P], AccountGroupByOutputType[P]> : Prisma.GetScalarType<T[P], AccountGroupByOutputType[P]>;
+}>>;
+export type AccountWhereInput = {
+    AND?: Prisma.AccountWhereInput | Prisma.AccountWhereInput[];
+    OR?: Prisma.AccountWhereInput[];
+    NOT?: Prisma.AccountWhereInput | Prisma.AccountWhereInput[];
+    id?: Prisma.StringFilter<"Account"> | string;
+    userId?: Prisma.StringFilter<"Account"> | string;
+    accountNumber?: Prisma.StringFilter<"Account"> | string;
+    type?: Prisma.EnumAccountTypeFilter<"Account"> | $Enums.AccountType;
+    status?: Prisma.EnumAccountStatusFilter<"Account"> | $Enums.AccountStatus;
+    currency?: Prisma.StringFilter<"Account"> | string;
+    balance?: Prisma.DecimalFilter<"Account"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFilter<"Account"> | Date | string;
+    updatedAt?: Prisma.DateTimeFilter<"Account"> | Date | string;
+    user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
+    outgoingTransactions?: Prisma.TransactionListRelationFilter;
+    incomingTransactions?: Prisma.TransactionListRelationFilter;
+    outgoingTransfers?: Prisma.TransferListRelationFilter;
+    incomingTransfers?: Prisma.TransferListRelationFilter;
+    ledgerEntries?: Prisma.LedgerEntryListRelationFilter;
+    cards?: Prisma.CardListRelationFilter;
+    savingsGoals?: Prisma.SavingsGoalListRelationFilter;
+    loans?: Prisma.LoanListRelationFilter;
+};
+export type AccountOrderByWithRelationInput = {
+    id?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+    accountNumber?: Prisma.SortOrder;
+    type?: Prisma.SortOrder;
+    status?: Prisma.SortOrder;
+    currency?: Prisma.SortOrder;
+    balance?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+    user?: Prisma.UserOrderByWithRelationInput;
+    outgoingTransactions?: Prisma.TransactionOrderByRelationAggregateInput;
+    incomingTransactions?: Prisma.TransactionOrderByRelationAggregateInput;
+    outgoingTransfers?: Prisma.TransferOrderByRelationAggregateInput;
+    incomingTransfers?: Prisma.TransferOrderByRelationAggregateInput;
+    ledgerEntries?: Prisma.LedgerEntryOrderByRelationAggregateInput;
+    cards?: Prisma.CardOrderByRelationAggregateInput;
+    savingsGoals?: Prisma.SavingsGoalOrderByRelationAggregateInput;
+    loans?: Prisma.LoanOrderByRelationAggregateInput;
+};
+export type AccountWhereUniqueInput = Prisma.AtLeast<{
+    id?: string;
+    accountNumber?: string;
+    AND?: Prisma.AccountWhereInput | Prisma.AccountWhereInput[];
+    OR?: Prisma.AccountWhereInput[];
+    NOT?: Prisma.AccountWhereInput | Prisma.AccountWhereInput[];
+    userId?: Prisma.StringFilter<"Account"> | string;
+    type?: Prisma.EnumAccountTypeFilter<"Account"> | $Enums.AccountType;
+    status?: Prisma.EnumAccountStatusFilter<"Account"> | $Enums.AccountStatus;
+    currency?: Prisma.StringFilter<"Account"> | string;
+    balance?: Prisma.DecimalFilter<"Account"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFilter<"Account"> | Date | string;
+    updatedAt?: Prisma.DateTimeFilter<"Account"> | Date | string;
+    user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
+    outgoingTransactions?: Prisma.TransactionListRelationFilter;
+    incomingTransactions?: Prisma.TransactionListRelationFilter;
+    outgoingTransfers?: Prisma.TransferListRelationFilter;
+    incomingTransfers?: Prisma.TransferListRelationFilter;
+    ledgerEntries?: Prisma.LedgerEntryListRelationFilter;
+    cards?: Prisma.CardListRelationFilter;
+    savingsGoals?: Prisma.SavingsGoalListRelationFilter;
+    loans?: Prisma.LoanListRelationFilter;
+}, "id" | "accountNumber">;
+export type AccountOrderByWithAggregationInput = {
+    id?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+    accountNumber?: Prisma.SortOrder;
+    type?: Prisma.SortOrder;
+    status?: Prisma.SortOrder;
+    currency?: Prisma.SortOrder;
+    balance?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+    _count?: Prisma.AccountCountOrderByAggregateInput;
+    _avg?: Prisma.AccountAvgOrderByAggregateInput;
+    _max?: Prisma.AccountMaxOrderByAggregateInput;
+    _min?: Prisma.AccountMinOrderByAggregateInput;
+    _sum?: Prisma.AccountSumOrderByAggregateInput;
+};
+export type AccountScalarWhereWithAggregatesInput = {
+    AND?: Prisma.AccountScalarWhereWithAggregatesInput | Prisma.AccountScalarWhereWithAggregatesInput[];
+    OR?: Prisma.AccountScalarWhereWithAggregatesInput[];
+    NOT?: Prisma.AccountScalarWhereWithAggregatesInput | Prisma.AccountScalarWhereWithAggregatesInput[];
+    id?: Prisma.StringWithAggregatesFilter<"Account"> | string;
+    userId?: Prisma.StringWithAggregatesFilter<"Account"> | string;
+    accountNumber?: Prisma.StringWithAggregatesFilter<"Account"> | string;
+    type?: Prisma.EnumAccountTypeWithAggregatesFilter<"Account"> | $Enums.AccountType;
+    status?: Prisma.EnumAccountStatusWithAggregatesFilter<"Account"> | $Enums.AccountStatus;
+    currency?: Prisma.StringWithAggregatesFilter<"Account"> | string;
+    balance?: Prisma.DecimalWithAggregatesFilter<"Account"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeWithAggregatesFilter<"Account"> | Date | string;
+    updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Account"> | Date | string;
+};
+export type AccountCreateInput = {
+    id?: string;
+    accountNumber: string;
+    type: $Enums.AccountType;
+    status?: $Enums.AccountStatus;
+    currency?: string;
+    balance?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    user: Prisma.UserCreateNestedOneWithoutAccountsInput;
+    outgoingTransactions?: Prisma.TransactionCreateNestedManyWithoutSenderAccountInput;
+    incomingTransactions?: Prisma.TransactionCreateNestedManyWithoutRecipientAccountInput;
+    outgoingTransfers?: Prisma.TransferCreateNestedManyWithoutFromAccountInput;
+    incomingTransfers?: Prisma.TransferCreateNestedManyWithoutToAccountInput;
+    ledgerEntries?: Prisma.LedgerEntryCreateNestedManyWithoutAccountInput;
+    cards?: Prisma.CardCreateNestedManyWithoutAccountInput;
+    savingsGoals?: Prisma.SavingsGoalCreateNestedManyWithoutAccountInput;
+    loans?: Prisma.LoanCreateNestedManyWithoutAccountInput;
+};
+export type AccountUncheckedCreateInput = {
+    id?: string;
+    userId: string;
+    accountNumber: string;
+    type: $Enums.AccountType;
+    status?: $Enums.AccountStatus;
+    currency?: string;
+    balance?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    outgoingTransactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutSenderAccountInput;
+    incomingTransactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutRecipientAccountInput;
+    outgoingTransfers?: Prisma.TransferUncheckedCreateNestedManyWithoutFromAccountInput;
+    incomingTransfers?: Prisma.TransferUncheckedCreateNestedManyWithoutToAccountInput;
+    ledgerEntries?: Prisma.LedgerEntryUncheckedCreateNestedManyWithoutAccountInput;
+    cards?: Prisma.CardUncheckedCreateNestedManyWithoutAccountInput;
+    savingsGoals?: Prisma.SavingsGoalUncheckedCreateNestedManyWithoutAccountInput;
+    loans?: Prisma.LoanUncheckedCreateNestedManyWithoutAccountInput;
+};
+export type AccountUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    accountNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    type?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType;
+    status?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    user?: Prisma.UserUpdateOneRequiredWithoutAccountsNestedInput;
+    outgoingTransactions?: Prisma.TransactionUpdateManyWithoutSenderAccountNestedInput;
+    incomingTransactions?: Prisma.TransactionUpdateManyWithoutRecipientAccountNestedInput;
+    outgoingTransfers?: Prisma.TransferUpdateManyWithoutFromAccountNestedInput;
+    incomingTransfers?: Prisma.TransferUpdateManyWithoutToAccountNestedInput;
+    ledgerEntries?: Prisma.LedgerEntryUpdateManyWithoutAccountNestedInput;
+    cards?: Prisma.CardUpdateManyWithoutAccountNestedInput;
+    savingsGoals?: Prisma.SavingsGoalUpdateManyWithoutAccountNestedInput;
+    loans?: Prisma.LoanUpdateManyWithoutAccountNestedInput;
+};
+export type AccountUncheckedUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    userId?: Prisma.StringFieldUpdateOperationsInput | string;
+    accountNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    type?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType;
+    status?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    outgoingTransactions?: Prisma.TransactionUncheckedUpdateManyWithoutSenderAccountNestedInput;
+    incomingTransactions?: Prisma.TransactionUncheckedUpdateManyWithoutRecipientAccountNestedInput;
+    outgoingTransfers?: Prisma.TransferUncheckedUpdateManyWithoutFromAccountNestedInput;
+    incomingTransfers?: Prisma.TransferUncheckedUpdateManyWithoutToAccountNestedInput;
+    ledgerEntries?: Prisma.LedgerEntryUncheckedUpdateManyWithoutAccountNestedInput;
+    cards?: Prisma.CardUncheckedUpdateManyWithoutAccountNestedInput;
+    savingsGoals?: Prisma.SavingsGoalUncheckedUpdateManyWithoutAccountNestedInput;
+    loans?: Prisma.LoanUncheckedUpdateManyWithoutAccountNestedInput;
+};
+export type AccountCreateManyInput = {
+    id?: string;
+    userId: string;
+    accountNumber: string;
+    type: $Enums.AccountType;
+    status?: $Enums.AccountStatus;
+    currency?: string;
+    balance?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type AccountUpdateManyMutationInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    accountNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    type?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType;
+    status?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type AccountUncheckedUpdateManyInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    userId?: Prisma.StringFieldUpdateOperationsInput | string;
+    accountNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    type?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType;
+    status?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type AccountListRelationFilter = {
+    every?: Prisma.AccountWhereInput;
+    some?: Prisma.AccountWhereInput;
+    none?: Prisma.AccountWhereInput;
+};
+export type AccountOrderByRelationAggregateInput = {
+    _count?: Prisma.SortOrder;
+};
+export type AccountCountOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+    accountNumber?: Prisma.SortOrder;
+    type?: Prisma.SortOrder;
+    status?: Prisma.SortOrder;
+    currency?: Prisma.SortOrder;
+    balance?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+};
+export type AccountAvgOrderByAggregateInput = {
+    balance?: Prisma.SortOrder;
+};
+export type AccountMaxOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+    accountNumber?: Prisma.SortOrder;
+    type?: Prisma.SortOrder;
+    status?: Prisma.SortOrder;
+    currency?: Prisma.SortOrder;
+    balance?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+};
+export type AccountMinOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+    accountNumber?: Prisma.SortOrder;
+    type?: Prisma.SortOrder;
+    status?: Prisma.SortOrder;
+    currency?: Prisma.SortOrder;
+    balance?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+};
+export type AccountSumOrderByAggregateInput = {
+    balance?: Prisma.SortOrder;
+};
+export type AccountScalarRelationFilter = {
+    is?: Prisma.AccountWhereInput;
+    isNot?: Prisma.AccountWhereInput;
+};
+export type AccountNullableScalarRelationFilter = {
+    is?: Prisma.AccountWhereInput | null;
+    isNot?: Prisma.AccountWhereInput | null;
+};
+export type AccountCreateNestedManyWithoutUserInput = {
+    create?: Prisma.XOR<Prisma.AccountCreateWithoutUserInput, Prisma.AccountUncheckedCreateWithoutUserInput> | Prisma.AccountCreateWithoutUserInput[] | Prisma.AccountUncheckedCreateWithoutUserInput[];
+    connectOrCreate?: Prisma.AccountCreateOrConnectWithoutUserInput | Prisma.AccountCreateOrConnectWithoutUserInput[];
+    createMany?: Prisma.AccountCreateManyUserInputEnvelope;
+    connect?: Prisma.AccountWhereUniqueInput | Prisma.AccountWhereUniqueInput[];
+};
+export type AccountUncheckedCreateNestedManyWithoutUserInput = {
+    create?: Prisma.XOR<Prisma.AccountCreateWithoutUserInput, Prisma.AccountUncheckedCreateWithoutUserInput> | Prisma.AccountCreateWithoutUserInput[] | Prisma.AccountUncheckedCreateWithoutUserInput[];
+    connectOrCreate?: Prisma.AccountCreateOrConnectWithoutUserInput | Prisma.AccountCreateOrConnectWithoutUserInput[];
+    createMany?: Prisma.AccountCreateManyUserInputEnvelope;
+    connect?: Prisma.AccountWhereUniqueInput | Prisma.AccountWhereUniqueInput[];
+};
+export type AccountUpdateManyWithoutUserNestedInput = {
+    create?: Prisma.XOR<Prisma.AccountCreateWithoutUserInput, Prisma.AccountUncheckedCreateWithoutUserInput> | Prisma.AccountCreateWithoutUserInput[] | Prisma.AccountUncheckedCreateWithoutUserInput[];
+    connectOrCreate?: Prisma.AccountCreateOrConnectWithoutUserInput | Prisma.AccountCreateOrConnectWithoutUserInput[];
+    upsert?: Prisma.AccountUpsertWithWhereUniqueWithoutUserInput | Prisma.AccountUpsertWithWhereUniqueWithoutUserInput[];
+    createMany?: Prisma.AccountCreateManyUserInputEnvelope;
+    set?: Prisma.AccountWhereUniqueInput | Prisma.AccountWhereUniqueInput[];
+    disconnect?: Prisma.AccountWhereUniqueInput | Prisma.AccountWhereUniqueInput[];
+    delete?: Prisma.AccountWhereUniqueInput | Prisma.AccountWhereUniqueInput[];
+    connect?: Prisma.AccountWhereUniqueInput | Prisma.AccountWhereUniqueInput[];
+    update?: Prisma.AccountUpdateWithWhereUniqueWithoutUserInput | Prisma.AccountUpdateWithWhereUniqueWithoutUserInput[];
+    updateMany?: Prisma.AccountUpdateManyWithWhereWithoutUserInput | Prisma.AccountUpdateManyWithWhereWithoutUserInput[];
+    deleteMany?: Prisma.AccountScalarWhereInput | Prisma.AccountScalarWhereInput[];
+};
+export type AccountUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: Prisma.XOR<Prisma.AccountCreateWithoutUserInput, Prisma.AccountUncheckedCreateWithoutUserInput> | Prisma.AccountCreateWithoutUserInput[] | Prisma.AccountUncheckedCreateWithoutUserInput[];
+    connectOrCreate?: Prisma.AccountCreateOrConnectWithoutUserInput | Prisma.AccountCreateOrConnectWithoutUserInput[];
+    upsert?: Prisma.AccountUpsertWithWhereUniqueWithoutUserInput | Prisma.AccountUpsertWithWhereUniqueWithoutUserInput[];
+    createMany?: Prisma.AccountCreateManyUserInputEnvelope;
+    set?: Prisma.AccountWhereUniqueInput | Prisma.AccountWhereUniqueInput[];
+    disconnect?: Prisma.AccountWhereUniqueInput | Prisma.AccountWhereUniqueInput[];
+    delete?: Prisma.AccountWhereUniqueInput | Prisma.AccountWhereUniqueInput[];
+    connect?: Prisma.AccountWhereUniqueInput | Prisma.AccountWhereUniqueInput[];
+    update?: Prisma.AccountUpdateWithWhereUniqueWithoutUserInput | Prisma.AccountUpdateWithWhereUniqueWithoutUserInput[];
+    updateMany?: Prisma.AccountUpdateManyWithWhereWithoutUserInput | Prisma.AccountUpdateManyWithWhereWithoutUserInput[];
+    deleteMany?: Prisma.AccountScalarWhereInput | Prisma.AccountScalarWhereInput[];
+};
+export type EnumAccountTypeFieldUpdateOperationsInput = {
+    set?: $Enums.AccountType;
+};
+export type EnumAccountStatusFieldUpdateOperationsInput = {
+    set?: $Enums.AccountStatus;
+};
+export type DecimalFieldUpdateOperationsInput = {
+    set?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    increment?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    divide?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+};
+export type AccountCreateNestedOneWithoutSavingsGoalsInput = {
+    create?: Prisma.XOR<Prisma.AccountCreateWithoutSavingsGoalsInput, Prisma.AccountUncheckedCreateWithoutSavingsGoalsInput>;
+    connectOrCreate?: Prisma.AccountCreateOrConnectWithoutSavingsGoalsInput;
+    connect?: Prisma.AccountWhereUniqueInput;
+};
+export type AccountUpdateOneRequiredWithoutSavingsGoalsNestedInput = {
+    create?: Prisma.XOR<Prisma.AccountCreateWithoutSavingsGoalsInput, Prisma.AccountUncheckedCreateWithoutSavingsGoalsInput>;
+    connectOrCreate?: Prisma.AccountCreateOrConnectWithoutSavingsGoalsInput;
+    upsert?: Prisma.AccountUpsertWithoutSavingsGoalsInput;
+    connect?: Prisma.AccountWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.AccountUpdateToOneWithWhereWithoutSavingsGoalsInput, Prisma.AccountUpdateWithoutSavingsGoalsInput>, Prisma.AccountUncheckedUpdateWithoutSavingsGoalsInput>;
+};
+export type AccountCreateNestedOneWithoutLoansInput = {
+    create?: Prisma.XOR<Prisma.AccountCreateWithoutLoansInput, Prisma.AccountUncheckedCreateWithoutLoansInput>;
+    connectOrCreate?: Prisma.AccountCreateOrConnectWithoutLoansInput;
+    connect?: Prisma.AccountWhereUniqueInput;
+};
+export type AccountUpdateOneRequiredWithoutLoansNestedInput = {
+    create?: Prisma.XOR<Prisma.AccountCreateWithoutLoansInput, Prisma.AccountUncheckedCreateWithoutLoansInput>;
+    connectOrCreate?: Prisma.AccountCreateOrConnectWithoutLoansInput;
+    upsert?: Prisma.AccountUpsertWithoutLoansInput;
+    connect?: Prisma.AccountWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.AccountUpdateToOneWithWhereWithoutLoansInput, Prisma.AccountUpdateWithoutLoansInput>, Prisma.AccountUncheckedUpdateWithoutLoansInput>;
+};
+export type AccountCreateNestedOneWithoutCardsInput = {
+    create?: Prisma.XOR<Prisma.AccountCreateWithoutCardsInput, Prisma.AccountUncheckedCreateWithoutCardsInput>;
+    connectOrCreate?: Prisma.AccountCreateOrConnectWithoutCardsInput;
+    connect?: Prisma.AccountWhereUniqueInput;
+};
+export type AccountUpdateOneRequiredWithoutCardsNestedInput = {
+    create?: Prisma.XOR<Prisma.AccountCreateWithoutCardsInput, Prisma.AccountUncheckedCreateWithoutCardsInput>;
+    connectOrCreate?: Prisma.AccountCreateOrConnectWithoutCardsInput;
+    upsert?: Prisma.AccountUpsertWithoutCardsInput;
+    connect?: Prisma.AccountWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.AccountUpdateToOneWithWhereWithoutCardsInput, Prisma.AccountUpdateWithoutCardsInput>, Prisma.AccountUncheckedUpdateWithoutCardsInput>;
+};
+export type AccountCreateNestedOneWithoutOutgoingTransactionsInput = {
+    create?: Prisma.XOR<Prisma.AccountCreateWithoutOutgoingTransactionsInput, Prisma.AccountUncheckedCreateWithoutOutgoingTransactionsInput>;
+    connectOrCreate?: Prisma.AccountCreateOrConnectWithoutOutgoingTransactionsInput;
+    connect?: Prisma.AccountWhereUniqueInput;
+};
+export type AccountCreateNestedOneWithoutIncomingTransactionsInput = {
+    create?: Prisma.XOR<Prisma.AccountCreateWithoutIncomingTransactionsInput, Prisma.AccountUncheckedCreateWithoutIncomingTransactionsInput>;
+    connectOrCreate?: Prisma.AccountCreateOrConnectWithoutIncomingTransactionsInput;
+    connect?: Prisma.AccountWhereUniqueInput;
+};
+export type AccountUpdateOneWithoutOutgoingTransactionsNestedInput = {
+    create?: Prisma.XOR<Prisma.AccountCreateWithoutOutgoingTransactionsInput, Prisma.AccountUncheckedCreateWithoutOutgoingTransactionsInput>;
+    connectOrCreate?: Prisma.AccountCreateOrConnectWithoutOutgoingTransactionsInput;
+    upsert?: Prisma.AccountUpsertWithoutOutgoingTransactionsInput;
+    disconnect?: Prisma.AccountWhereInput | boolean;
+    delete?: Prisma.AccountWhereInput | boolean;
+    connect?: Prisma.AccountWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.AccountUpdateToOneWithWhereWithoutOutgoingTransactionsInput, Prisma.AccountUpdateWithoutOutgoingTransactionsInput>, Prisma.AccountUncheckedUpdateWithoutOutgoingTransactionsInput>;
+};
+export type AccountUpdateOneWithoutIncomingTransactionsNestedInput = {
+    create?: Prisma.XOR<Prisma.AccountCreateWithoutIncomingTransactionsInput, Prisma.AccountUncheckedCreateWithoutIncomingTransactionsInput>;
+    connectOrCreate?: Prisma.AccountCreateOrConnectWithoutIncomingTransactionsInput;
+    upsert?: Prisma.AccountUpsertWithoutIncomingTransactionsInput;
+    disconnect?: Prisma.AccountWhereInput | boolean;
+    delete?: Prisma.AccountWhereInput | boolean;
+    connect?: Prisma.AccountWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.AccountUpdateToOneWithWhereWithoutIncomingTransactionsInput, Prisma.AccountUpdateWithoutIncomingTransactionsInput>, Prisma.AccountUncheckedUpdateWithoutIncomingTransactionsInput>;
+};
+export type AccountCreateNestedOneWithoutOutgoingTransfersInput = {
+    create?: Prisma.XOR<Prisma.AccountCreateWithoutOutgoingTransfersInput, Prisma.AccountUncheckedCreateWithoutOutgoingTransfersInput>;
+    connectOrCreate?: Prisma.AccountCreateOrConnectWithoutOutgoingTransfersInput;
+    connect?: Prisma.AccountWhereUniqueInput;
+};
+export type AccountCreateNestedOneWithoutIncomingTransfersInput = {
+    create?: Prisma.XOR<Prisma.AccountCreateWithoutIncomingTransfersInput, Prisma.AccountUncheckedCreateWithoutIncomingTransfersInput>;
+    connectOrCreate?: Prisma.AccountCreateOrConnectWithoutIncomingTransfersInput;
+    connect?: Prisma.AccountWhereUniqueInput;
+};
+export type AccountUpdateOneRequiredWithoutOutgoingTransfersNestedInput = {
+    create?: Prisma.XOR<Prisma.AccountCreateWithoutOutgoingTransfersInput, Prisma.AccountUncheckedCreateWithoutOutgoingTransfersInput>;
+    connectOrCreate?: Prisma.AccountCreateOrConnectWithoutOutgoingTransfersInput;
+    upsert?: Prisma.AccountUpsertWithoutOutgoingTransfersInput;
+    connect?: Prisma.AccountWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.AccountUpdateToOneWithWhereWithoutOutgoingTransfersInput, Prisma.AccountUpdateWithoutOutgoingTransfersInput>, Prisma.AccountUncheckedUpdateWithoutOutgoingTransfersInput>;
+};
+export type AccountUpdateOneRequiredWithoutIncomingTransfersNestedInput = {
+    create?: Prisma.XOR<Prisma.AccountCreateWithoutIncomingTransfersInput, Prisma.AccountUncheckedCreateWithoutIncomingTransfersInput>;
+    connectOrCreate?: Prisma.AccountCreateOrConnectWithoutIncomingTransfersInput;
+    upsert?: Prisma.AccountUpsertWithoutIncomingTransfersInput;
+    connect?: Prisma.AccountWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.AccountUpdateToOneWithWhereWithoutIncomingTransfersInput, Prisma.AccountUpdateWithoutIncomingTransfersInput>, Prisma.AccountUncheckedUpdateWithoutIncomingTransfersInput>;
+};
+export type AccountCreateNestedOneWithoutLedgerEntriesInput = {
+    create?: Prisma.XOR<Prisma.AccountCreateWithoutLedgerEntriesInput, Prisma.AccountUncheckedCreateWithoutLedgerEntriesInput>;
+    connectOrCreate?: Prisma.AccountCreateOrConnectWithoutLedgerEntriesInput;
+    connect?: Prisma.AccountWhereUniqueInput;
+};
+export type AccountUpdateOneRequiredWithoutLedgerEntriesNestedInput = {
+    create?: Prisma.XOR<Prisma.AccountCreateWithoutLedgerEntriesInput, Prisma.AccountUncheckedCreateWithoutLedgerEntriesInput>;
+    connectOrCreate?: Prisma.AccountCreateOrConnectWithoutLedgerEntriesInput;
+    upsert?: Prisma.AccountUpsertWithoutLedgerEntriesInput;
+    connect?: Prisma.AccountWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.AccountUpdateToOneWithWhereWithoutLedgerEntriesInput, Prisma.AccountUpdateWithoutLedgerEntriesInput>, Prisma.AccountUncheckedUpdateWithoutLedgerEntriesInput>;
+};
+export type AccountCreateWithoutUserInput = {
+    id?: string;
+    accountNumber: string;
+    type: $Enums.AccountType;
+    status?: $Enums.AccountStatus;
+    currency?: string;
+    balance?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    outgoingTransactions?: Prisma.TransactionCreateNestedManyWithoutSenderAccountInput;
+    incomingTransactions?: Prisma.TransactionCreateNestedManyWithoutRecipientAccountInput;
+    outgoingTransfers?: Prisma.TransferCreateNestedManyWithoutFromAccountInput;
+    incomingTransfers?: Prisma.TransferCreateNestedManyWithoutToAccountInput;
+    ledgerEntries?: Prisma.LedgerEntryCreateNestedManyWithoutAccountInput;
+    cards?: Prisma.CardCreateNestedManyWithoutAccountInput;
+    savingsGoals?: Prisma.SavingsGoalCreateNestedManyWithoutAccountInput;
+    loans?: Prisma.LoanCreateNestedManyWithoutAccountInput;
+};
+export type AccountUncheckedCreateWithoutUserInput = {
+    id?: string;
+    accountNumber: string;
+    type: $Enums.AccountType;
+    status?: $Enums.AccountStatus;
+    currency?: string;
+    balance?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    outgoingTransactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutSenderAccountInput;
+    incomingTransactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutRecipientAccountInput;
+    outgoingTransfers?: Prisma.TransferUncheckedCreateNestedManyWithoutFromAccountInput;
+    incomingTransfers?: Prisma.TransferUncheckedCreateNestedManyWithoutToAccountInput;
+    ledgerEntries?: Prisma.LedgerEntryUncheckedCreateNestedManyWithoutAccountInput;
+    cards?: Prisma.CardUncheckedCreateNestedManyWithoutAccountInput;
+    savingsGoals?: Prisma.SavingsGoalUncheckedCreateNestedManyWithoutAccountInput;
+    loans?: Prisma.LoanUncheckedCreateNestedManyWithoutAccountInput;
+};
+export type AccountCreateOrConnectWithoutUserInput = {
+    where: Prisma.AccountWhereUniqueInput;
+    create: Prisma.XOR<Prisma.AccountCreateWithoutUserInput, Prisma.AccountUncheckedCreateWithoutUserInput>;
+};
+export type AccountCreateManyUserInputEnvelope = {
+    data: Prisma.AccountCreateManyUserInput | Prisma.AccountCreateManyUserInput[];
+    skipDuplicates?: boolean;
+};
+export type AccountUpsertWithWhereUniqueWithoutUserInput = {
+    where: Prisma.AccountWhereUniqueInput;
+    update: Prisma.XOR<Prisma.AccountUpdateWithoutUserInput, Prisma.AccountUncheckedUpdateWithoutUserInput>;
+    create: Prisma.XOR<Prisma.AccountCreateWithoutUserInput, Prisma.AccountUncheckedCreateWithoutUserInput>;
+};
+export type AccountUpdateWithWhereUniqueWithoutUserInput = {
+    where: Prisma.AccountWhereUniqueInput;
+    data: Prisma.XOR<Prisma.AccountUpdateWithoutUserInput, Prisma.AccountUncheckedUpdateWithoutUserInput>;
+};
+export type AccountUpdateManyWithWhereWithoutUserInput = {
+    where: Prisma.AccountScalarWhereInput;
+    data: Prisma.XOR<Prisma.AccountUpdateManyMutationInput, Prisma.AccountUncheckedUpdateManyWithoutUserInput>;
+};
+export type AccountScalarWhereInput = {
+    AND?: Prisma.AccountScalarWhereInput | Prisma.AccountScalarWhereInput[];
+    OR?: Prisma.AccountScalarWhereInput[];
+    NOT?: Prisma.AccountScalarWhereInput | Prisma.AccountScalarWhereInput[];
+    id?: Prisma.StringFilter<"Account"> | string;
+    userId?: Prisma.StringFilter<"Account"> | string;
+    accountNumber?: Prisma.StringFilter<"Account"> | string;
+    type?: Prisma.EnumAccountTypeFilter<"Account"> | $Enums.AccountType;
+    status?: Prisma.EnumAccountStatusFilter<"Account"> | $Enums.AccountStatus;
+    currency?: Prisma.StringFilter<"Account"> | string;
+    balance?: Prisma.DecimalFilter<"Account"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFilter<"Account"> | Date | string;
+    updatedAt?: Prisma.DateTimeFilter<"Account"> | Date | string;
+};
+export type AccountCreateWithoutSavingsGoalsInput = {
+    id?: string;
+    accountNumber: string;
+    type: $Enums.AccountType;
+    status?: $Enums.AccountStatus;
+    currency?: string;
+    balance?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    user: Prisma.UserCreateNestedOneWithoutAccountsInput;
+    outgoingTransactions?: Prisma.TransactionCreateNestedManyWithoutSenderAccountInput;
+    incomingTransactions?: Prisma.TransactionCreateNestedManyWithoutRecipientAccountInput;
+    outgoingTransfers?: Prisma.TransferCreateNestedManyWithoutFromAccountInput;
+    incomingTransfers?: Prisma.TransferCreateNestedManyWithoutToAccountInput;
+    ledgerEntries?: Prisma.LedgerEntryCreateNestedManyWithoutAccountInput;
+    cards?: Prisma.CardCreateNestedManyWithoutAccountInput;
+    loans?: Prisma.LoanCreateNestedManyWithoutAccountInput;
+};
+export type AccountUncheckedCreateWithoutSavingsGoalsInput = {
+    id?: string;
+    userId: string;
+    accountNumber: string;
+    type: $Enums.AccountType;
+    status?: $Enums.AccountStatus;
+    currency?: string;
+    balance?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    outgoingTransactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutSenderAccountInput;
+    incomingTransactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutRecipientAccountInput;
+    outgoingTransfers?: Prisma.TransferUncheckedCreateNestedManyWithoutFromAccountInput;
+    incomingTransfers?: Prisma.TransferUncheckedCreateNestedManyWithoutToAccountInput;
+    ledgerEntries?: Prisma.LedgerEntryUncheckedCreateNestedManyWithoutAccountInput;
+    cards?: Prisma.CardUncheckedCreateNestedManyWithoutAccountInput;
+    loans?: Prisma.LoanUncheckedCreateNestedManyWithoutAccountInput;
+};
+export type AccountCreateOrConnectWithoutSavingsGoalsInput = {
+    where: Prisma.AccountWhereUniqueInput;
+    create: Prisma.XOR<Prisma.AccountCreateWithoutSavingsGoalsInput, Prisma.AccountUncheckedCreateWithoutSavingsGoalsInput>;
+};
+export type AccountUpsertWithoutSavingsGoalsInput = {
+    update: Prisma.XOR<Prisma.AccountUpdateWithoutSavingsGoalsInput, Prisma.AccountUncheckedUpdateWithoutSavingsGoalsInput>;
+    create: Prisma.XOR<Prisma.AccountCreateWithoutSavingsGoalsInput, Prisma.AccountUncheckedCreateWithoutSavingsGoalsInput>;
+    where?: Prisma.AccountWhereInput;
+};
+export type AccountUpdateToOneWithWhereWithoutSavingsGoalsInput = {
+    where?: Prisma.AccountWhereInput;
+    data: Prisma.XOR<Prisma.AccountUpdateWithoutSavingsGoalsInput, Prisma.AccountUncheckedUpdateWithoutSavingsGoalsInput>;
+};
+export type AccountUpdateWithoutSavingsGoalsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    accountNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    type?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType;
+    status?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    user?: Prisma.UserUpdateOneRequiredWithoutAccountsNestedInput;
+    outgoingTransactions?: Prisma.TransactionUpdateManyWithoutSenderAccountNestedInput;
+    incomingTransactions?: Prisma.TransactionUpdateManyWithoutRecipientAccountNestedInput;
+    outgoingTransfers?: Prisma.TransferUpdateManyWithoutFromAccountNestedInput;
+    incomingTransfers?: Prisma.TransferUpdateManyWithoutToAccountNestedInput;
+    ledgerEntries?: Prisma.LedgerEntryUpdateManyWithoutAccountNestedInput;
+    cards?: Prisma.CardUpdateManyWithoutAccountNestedInput;
+    loans?: Prisma.LoanUpdateManyWithoutAccountNestedInput;
+};
+export type AccountUncheckedUpdateWithoutSavingsGoalsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    userId?: Prisma.StringFieldUpdateOperationsInput | string;
+    accountNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    type?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType;
+    status?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    outgoingTransactions?: Prisma.TransactionUncheckedUpdateManyWithoutSenderAccountNestedInput;
+    incomingTransactions?: Prisma.TransactionUncheckedUpdateManyWithoutRecipientAccountNestedInput;
+    outgoingTransfers?: Prisma.TransferUncheckedUpdateManyWithoutFromAccountNestedInput;
+    incomingTransfers?: Prisma.TransferUncheckedUpdateManyWithoutToAccountNestedInput;
+    ledgerEntries?: Prisma.LedgerEntryUncheckedUpdateManyWithoutAccountNestedInput;
+    cards?: Prisma.CardUncheckedUpdateManyWithoutAccountNestedInput;
+    loans?: Prisma.LoanUncheckedUpdateManyWithoutAccountNestedInput;
+};
+export type AccountCreateWithoutLoansInput = {
+    id?: string;
+    accountNumber: string;
+    type: $Enums.AccountType;
+    status?: $Enums.AccountStatus;
+    currency?: string;
+    balance?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    user: Prisma.UserCreateNestedOneWithoutAccountsInput;
+    outgoingTransactions?: Prisma.TransactionCreateNestedManyWithoutSenderAccountInput;
+    incomingTransactions?: Prisma.TransactionCreateNestedManyWithoutRecipientAccountInput;
+    outgoingTransfers?: Prisma.TransferCreateNestedManyWithoutFromAccountInput;
+    incomingTransfers?: Prisma.TransferCreateNestedManyWithoutToAccountInput;
+    ledgerEntries?: Prisma.LedgerEntryCreateNestedManyWithoutAccountInput;
+    cards?: Prisma.CardCreateNestedManyWithoutAccountInput;
+    savingsGoals?: Prisma.SavingsGoalCreateNestedManyWithoutAccountInput;
+};
+export type AccountUncheckedCreateWithoutLoansInput = {
+    id?: string;
+    userId: string;
+    accountNumber: string;
+    type: $Enums.AccountType;
+    status?: $Enums.AccountStatus;
+    currency?: string;
+    balance?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    outgoingTransactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutSenderAccountInput;
+    incomingTransactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutRecipientAccountInput;
+    outgoingTransfers?: Prisma.TransferUncheckedCreateNestedManyWithoutFromAccountInput;
+    incomingTransfers?: Prisma.TransferUncheckedCreateNestedManyWithoutToAccountInput;
+    ledgerEntries?: Prisma.LedgerEntryUncheckedCreateNestedManyWithoutAccountInput;
+    cards?: Prisma.CardUncheckedCreateNestedManyWithoutAccountInput;
+    savingsGoals?: Prisma.SavingsGoalUncheckedCreateNestedManyWithoutAccountInput;
+};
+export type AccountCreateOrConnectWithoutLoansInput = {
+    where: Prisma.AccountWhereUniqueInput;
+    create: Prisma.XOR<Prisma.AccountCreateWithoutLoansInput, Prisma.AccountUncheckedCreateWithoutLoansInput>;
+};
+export type AccountUpsertWithoutLoansInput = {
+    update: Prisma.XOR<Prisma.AccountUpdateWithoutLoansInput, Prisma.AccountUncheckedUpdateWithoutLoansInput>;
+    create: Prisma.XOR<Prisma.AccountCreateWithoutLoansInput, Prisma.AccountUncheckedCreateWithoutLoansInput>;
+    where?: Prisma.AccountWhereInput;
+};
+export type AccountUpdateToOneWithWhereWithoutLoansInput = {
+    where?: Prisma.AccountWhereInput;
+    data: Prisma.XOR<Prisma.AccountUpdateWithoutLoansInput, Prisma.AccountUncheckedUpdateWithoutLoansInput>;
+};
+export type AccountUpdateWithoutLoansInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    accountNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    type?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType;
+    status?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    user?: Prisma.UserUpdateOneRequiredWithoutAccountsNestedInput;
+    outgoingTransactions?: Prisma.TransactionUpdateManyWithoutSenderAccountNestedInput;
+    incomingTransactions?: Prisma.TransactionUpdateManyWithoutRecipientAccountNestedInput;
+    outgoingTransfers?: Prisma.TransferUpdateManyWithoutFromAccountNestedInput;
+    incomingTransfers?: Prisma.TransferUpdateManyWithoutToAccountNestedInput;
+    ledgerEntries?: Prisma.LedgerEntryUpdateManyWithoutAccountNestedInput;
+    cards?: Prisma.CardUpdateManyWithoutAccountNestedInput;
+    savingsGoals?: Prisma.SavingsGoalUpdateManyWithoutAccountNestedInput;
+};
+export type AccountUncheckedUpdateWithoutLoansInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    userId?: Prisma.StringFieldUpdateOperationsInput | string;
+    accountNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    type?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType;
+    status?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    outgoingTransactions?: Prisma.TransactionUncheckedUpdateManyWithoutSenderAccountNestedInput;
+    incomingTransactions?: Prisma.TransactionUncheckedUpdateManyWithoutRecipientAccountNestedInput;
+    outgoingTransfers?: Prisma.TransferUncheckedUpdateManyWithoutFromAccountNestedInput;
+    incomingTransfers?: Prisma.TransferUncheckedUpdateManyWithoutToAccountNestedInput;
+    ledgerEntries?: Prisma.LedgerEntryUncheckedUpdateManyWithoutAccountNestedInput;
+    cards?: Prisma.CardUncheckedUpdateManyWithoutAccountNestedInput;
+    savingsGoals?: Prisma.SavingsGoalUncheckedUpdateManyWithoutAccountNestedInput;
+};
+export type AccountCreateWithoutCardsInput = {
+    id?: string;
+    accountNumber: string;
+    type: $Enums.AccountType;
+    status?: $Enums.AccountStatus;
+    currency?: string;
+    balance?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    user: Prisma.UserCreateNestedOneWithoutAccountsInput;
+    outgoingTransactions?: Prisma.TransactionCreateNestedManyWithoutSenderAccountInput;
+    incomingTransactions?: Prisma.TransactionCreateNestedManyWithoutRecipientAccountInput;
+    outgoingTransfers?: Prisma.TransferCreateNestedManyWithoutFromAccountInput;
+    incomingTransfers?: Prisma.TransferCreateNestedManyWithoutToAccountInput;
+    ledgerEntries?: Prisma.LedgerEntryCreateNestedManyWithoutAccountInput;
+    savingsGoals?: Prisma.SavingsGoalCreateNestedManyWithoutAccountInput;
+    loans?: Prisma.LoanCreateNestedManyWithoutAccountInput;
+};
+export type AccountUncheckedCreateWithoutCardsInput = {
+    id?: string;
+    userId: string;
+    accountNumber: string;
+    type: $Enums.AccountType;
+    status?: $Enums.AccountStatus;
+    currency?: string;
+    balance?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    outgoingTransactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutSenderAccountInput;
+    incomingTransactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutRecipientAccountInput;
+    outgoingTransfers?: Prisma.TransferUncheckedCreateNestedManyWithoutFromAccountInput;
+    incomingTransfers?: Prisma.TransferUncheckedCreateNestedManyWithoutToAccountInput;
+    ledgerEntries?: Prisma.LedgerEntryUncheckedCreateNestedManyWithoutAccountInput;
+    savingsGoals?: Prisma.SavingsGoalUncheckedCreateNestedManyWithoutAccountInput;
+    loans?: Prisma.LoanUncheckedCreateNestedManyWithoutAccountInput;
+};
+export type AccountCreateOrConnectWithoutCardsInput = {
+    where: Prisma.AccountWhereUniqueInput;
+    create: Prisma.XOR<Prisma.AccountCreateWithoutCardsInput, Prisma.AccountUncheckedCreateWithoutCardsInput>;
+};
+export type AccountUpsertWithoutCardsInput = {
+    update: Prisma.XOR<Prisma.AccountUpdateWithoutCardsInput, Prisma.AccountUncheckedUpdateWithoutCardsInput>;
+    create: Prisma.XOR<Prisma.AccountCreateWithoutCardsInput, Prisma.AccountUncheckedCreateWithoutCardsInput>;
+    where?: Prisma.AccountWhereInput;
+};
+export type AccountUpdateToOneWithWhereWithoutCardsInput = {
+    where?: Prisma.AccountWhereInput;
+    data: Prisma.XOR<Prisma.AccountUpdateWithoutCardsInput, Prisma.AccountUncheckedUpdateWithoutCardsInput>;
+};
+export type AccountUpdateWithoutCardsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    accountNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    type?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType;
+    status?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    user?: Prisma.UserUpdateOneRequiredWithoutAccountsNestedInput;
+    outgoingTransactions?: Prisma.TransactionUpdateManyWithoutSenderAccountNestedInput;
+    incomingTransactions?: Prisma.TransactionUpdateManyWithoutRecipientAccountNestedInput;
+    outgoingTransfers?: Prisma.TransferUpdateManyWithoutFromAccountNestedInput;
+    incomingTransfers?: Prisma.TransferUpdateManyWithoutToAccountNestedInput;
+    ledgerEntries?: Prisma.LedgerEntryUpdateManyWithoutAccountNestedInput;
+    savingsGoals?: Prisma.SavingsGoalUpdateManyWithoutAccountNestedInput;
+    loans?: Prisma.LoanUpdateManyWithoutAccountNestedInput;
+};
+export type AccountUncheckedUpdateWithoutCardsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    userId?: Prisma.StringFieldUpdateOperationsInput | string;
+    accountNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    type?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType;
+    status?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    outgoingTransactions?: Prisma.TransactionUncheckedUpdateManyWithoutSenderAccountNestedInput;
+    incomingTransactions?: Prisma.TransactionUncheckedUpdateManyWithoutRecipientAccountNestedInput;
+    outgoingTransfers?: Prisma.TransferUncheckedUpdateManyWithoutFromAccountNestedInput;
+    incomingTransfers?: Prisma.TransferUncheckedUpdateManyWithoutToAccountNestedInput;
+    ledgerEntries?: Prisma.LedgerEntryUncheckedUpdateManyWithoutAccountNestedInput;
+    savingsGoals?: Prisma.SavingsGoalUncheckedUpdateManyWithoutAccountNestedInput;
+    loans?: Prisma.LoanUncheckedUpdateManyWithoutAccountNestedInput;
+};
+export type AccountCreateWithoutOutgoingTransactionsInput = {
+    id?: string;
+    accountNumber: string;
+    type: $Enums.AccountType;
+    status?: $Enums.AccountStatus;
+    currency?: string;
+    balance?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    user: Prisma.UserCreateNestedOneWithoutAccountsInput;
+    incomingTransactions?: Prisma.TransactionCreateNestedManyWithoutRecipientAccountInput;
+    outgoingTransfers?: Prisma.TransferCreateNestedManyWithoutFromAccountInput;
+    incomingTransfers?: Prisma.TransferCreateNestedManyWithoutToAccountInput;
+    ledgerEntries?: Prisma.LedgerEntryCreateNestedManyWithoutAccountInput;
+    cards?: Prisma.CardCreateNestedManyWithoutAccountInput;
+    savingsGoals?: Prisma.SavingsGoalCreateNestedManyWithoutAccountInput;
+    loans?: Prisma.LoanCreateNestedManyWithoutAccountInput;
+};
+export type AccountUncheckedCreateWithoutOutgoingTransactionsInput = {
+    id?: string;
+    userId: string;
+    accountNumber: string;
+    type: $Enums.AccountType;
+    status?: $Enums.AccountStatus;
+    currency?: string;
+    balance?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    incomingTransactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutRecipientAccountInput;
+    outgoingTransfers?: Prisma.TransferUncheckedCreateNestedManyWithoutFromAccountInput;
+    incomingTransfers?: Prisma.TransferUncheckedCreateNestedManyWithoutToAccountInput;
+    ledgerEntries?: Prisma.LedgerEntryUncheckedCreateNestedManyWithoutAccountInput;
+    cards?: Prisma.CardUncheckedCreateNestedManyWithoutAccountInput;
+    savingsGoals?: Prisma.SavingsGoalUncheckedCreateNestedManyWithoutAccountInput;
+    loans?: Prisma.LoanUncheckedCreateNestedManyWithoutAccountInput;
+};
+export type AccountCreateOrConnectWithoutOutgoingTransactionsInput = {
+    where: Prisma.AccountWhereUniqueInput;
+    create: Prisma.XOR<Prisma.AccountCreateWithoutOutgoingTransactionsInput, Prisma.AccountUncheckedCreateWithoutOutgoingTransactionsInput>;
+};
+export type AccountCreateWithoutIncomingTransactionsInput = {
+    id?: string;
+    accountNumber: string;
+    type: $Enums.AccountType;
+    status?: $Enums.AccountStatus;
+    currency?: string;
+    balance?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    user: Prisma.UserCreateNestedOneWithoutAccountsInput;
+    outgoingTransactions?: Prisma.TransactionCreateNestedManyWithoutSenderAccountInput;
+    outgoingTransfers?: Prisma.TransferCreateNestedManyWithoutFromAccountInput;
+    incomingTransfers?: Prisma.TransferCreateNestedManyWithoutToAccountInput;
+    ledgerEntries?: Prisma.LedgerEntryCreateNestedManyWithoutAccountInput;
+    cards?: Prisma.CardCreateNestedManyWithoutAccountInput;
+    savingsGoals?: Prisma.SavingsGoalCreateNestedManyWithoutAccountInput;
+    loans?: Prisma.LoanCreateNestedManyWithoutAccountInput;
+};
+export type AccountUncheckedCreateWithoutIncomingTransactionsInput = {
+    id?: string;
+    userId: string;
+    accountNumber: string;
+    type: $Enums.AccountType;
+    status?: $Enums.AccountStatus;
+    currency?: string;
+    balance?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    outgoingTransactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutSenderAccountInput;
+    outgoingTransfers?: Prisma.TransferUncheckedCreateNestedManyWithoutFromAccountInput;
+    incomingTransfers?: Prisma.TransferUncheckedCreateNestedManyWithoutToAccountInput;
+    ledgerEntries?: Prisma.LedgerEntryUncheckedCreateNestedManyWithoutAccountInput;
+    cards?: Prisma.CardUncheckedCreateNestedManyWithoutAccountInput;
+    savingsGoals?: Prisma.SavingsGoalUncheckedCreateNestedManyWithoutAccountInput;
+    loans?: Prisma.LoanUncheckedCreateNestedManyWithoutAccountInput;
+};
+export type AccountCreateOrConnectWithoutIncomingTransactionsInput = {
+    where: Prisma.AccountWhereUniqueInput;
+    create: Prisma.XOR<Prisma.AccountCreateWithoutIncomingTransactionsInput, Prisma.AccountUncheckedCreateWithoutIncomingTransactionsInput>;
+};
+export type AccountUpsertWithoutOutgoingTransactionsInput = {
+    update: Prisma.XOR<Prisma.AccountUpdateWithoutOutgoingTransactionsInput, Prisma.AccountUncheckedUpdateWithoutOutgoingTransactionsInput>;
+    create: Prisma.XOR<Prisma.AccountCreateWithoutOutgoingTransactionsInput, Prisma.AccountUncheckedCreateWithoutOutgoingTransactionsInput>;
+    where?: Prisma.AccountWhereInput;
+};
+export type AccountUpdateToOneWithWhereWithoutOutgoingTransactionsInput = {
+    where?: Prisma.AccountWhereInput;
+    data: Prisma.XOR<Prisma.AccountUpdateWithoutOutgoingTransactionsInput, Prisma.AccountUncheckedUpdateWithoutOutgoingTransactionsInput>;
+};
+export type AccountUpdateWithoutOutgoingTransactionsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    accountNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    type?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType;
+    status?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    user?: Prisma.UserUpdateOneRequiredWithoutAccountsNestedInput;
+    incomingTransactions?: Prisma.TransactionUpdateManyWithoutRecipientAccountNestedInput;
+    outgoingTransfers?: Prisma.TransferUpdateManyWithoutFromAccountNestedInput;
+    incomingTransfers?: Prisma.TransferUpdateManyWithoutToAccountNestedInput;
+    ledgerEntries?: Prisma.LedgerEntryUpdateManyWithoutAccountNestedInput;
+    cards?: Prisma.CardUpdateManyWithoutAccountNestedInput;
+    savingsGoals?: Prisma.SavingsGoalUpdateManyWithoutAccountNestedInput;
+    loans?: Prisma.LoanUpdateManyWithoutAccountNestedInput;
+};
+export type AccountUncheckedUpdateWithoutOutgoingTransactionsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    userId?: Prisma.StringFieldUpdateOperationsInput | string;
+    accountNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    type?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType;
+    status?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    incomingTransactions?: Prisma.TransactionUncheckedUpdateManyWithoutRecipientAccountNestedInput;
+    outgoingTransfers?: Prisma.TransferUncheckedUpdateManyWithoutFromAccountNestedInput;
+    incomingTransfers?: Prisma.TransferUncheckedUpdateManyWithoutToAccountNestedInput;
+    ledgerEntries?: Prisma.LedgerEntryUncheckedUpdateManyWithoutAccountNestedInput;
+    cards?: Prisma.CardUncheckedUpdateManyWithoutAccountNestedInput;
+    savingsGoals?: Prisma.SavingsGoalUncheckedUpdateManyWithoutAccountNestedInput;
+    loans?: Prisma.LoanUncheckedUpdateManyWithoutAccountNestedInput;
+};
+export type AccountUpsertWithoutIncomingTransactionsInput = {
+    update: Prisma.XOR<Prisma.AccountUpdateWithoutIncomingTransactionsInput, Prisma.AccountUncheckedUpdateWithoutIncomingTransactionsInput>;
+    create: Prisma.XOR<Prisma.AccountCreateWithoutIncomingTransactionsInput, Prisma.AccountUncheckedCreateWithoutIncomingTransactionsInput>;
+    where?: Prisma.AccountWhereInput;
+};
+export type AccountUpdateToOneWithWhereWithoutIncomingTransactionsInput = {
+    where?: Prisma.AccountWhereInput;
+    data: Prisma.XOR<Prisma.AccountUpdateWithoutIncomingTransactionsInput, Prisma.AccountUncheckedUpdateWithoutIncomingTransactionsInput>;
+};
+export type AccountUpdateWithoutIncomingTransactionsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    accountNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    type?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType;
+    status?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    user?: Prisma.UserUpdateOneRequiredWithoutAccountsNestedInput;
+    outgoingTransactions?: Prisma.TransactionUpdateManyWithoutSenderAccountNestedInput;
+    outgoingTransfers?: Prisma.TransferUpdateManyWithoutFromAccountNestedInput;
+    incomingTransfers?: Prisma.TransferUpdateManyWithoutToAccountNestedInput;
+    ledgerEntries?: Prisma.LedgerEntryUpdateManyWithoutAccountNestedInput;
+    cards?: Prisma.CardUpdateManyWithoutAccountNestedInput;
+    savingsGoals?: Prisma.SavingsGoalUpdateManyWithoutAccountNestedInput;
+    loans?: Prisma.LoanUpdateManyWithoutAccountNestedInput;
+};
+export type AccountUncheckedUpdateWithoutIncomingTransactionsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    userId?: Prisma.StringFieldUpdateOperationsInput | string;
+    accountNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    type?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType;
+    status?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    outgoingTransactions?: Prisma.TransactionUncheckedUpdateManyWithoutSenderAccountNestedInput;
+    outgoingTransfers?: Prisma.TransferUncheckedUpdateManyWithoutFromAccountNestedInput;
+    incomingTransfers?: Prisma.TransferUncheckedUpdateManyWithoutToAccountNestedInput;
+    ledgerEntries?: Prisma.LedgerEntryUncheckedUpdateManyWithoutAccountNestedInput;
+    cards?: Prisma.CardUncheckedUpdateManyWithoutAccountNestedInput;
+    savingsGoals?: Prisma.SavingsGoalUncheckedUpdateManyWithoutAccountNestedInput;
+    loans?: Prisma.LoanUncheckedUpdateManyWithoutAccountNestedInput;
+};
+export type AccountCreateWithoutOutgoingTransfersInput = {
+    id?: string;
+    accountNumber: string;
+    type: $Enums.AccountType;
+    status?: $Enums.AccountStatus;
+    currency?: string;
+    balance?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    user: Prisma.UserCreateNestedOneWithoutAccountsInput;
+    outgoingTransactions?: Prisma.TransactionCreateNestedManyWithoutSenderAccountInput;
+    incomingTransactions?: Prisma.TransactionCreateNestedManyWithoutRecipientAccountInput;
+    incomingTransfers?: Prisma.TransferCreateNestedManyWithoutToAccountInput;
+    ledgerEntries?: Prisma.LedgerEntryCreateNestedManyWithoutAccountInput;
+    cards?: Prisma.CardCreateNestedManyWithoutAccountInput;
+    savingsGoals?: Prisma.SavingsGoalCreateNestedManyWithoutAccountInput;
+    loans?: Prisma.LoanCreateNestedManyWithoutAccountInput;
+};
+export type AccountUncheckedCreateWithoutOutgoingTransfersInput = {
+    id?: string;
+    userId: string;
+    accountNumber: string;
+    type: $Enums.AccountType;
+    status?: $Enums.AccountStatus;
+    currency?: string;
+    balance?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    outgoingTransactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutSenderAccountInput;
+    incomingTransactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutRecipientAccountInput;
+    incomingTransfers?: Prisma.TransferUncheckedCreateNestedManyWithoutToAccountInput;
+    ledgerEntries?: Prisma.LedgerEntryUncheckedCreateNestedManyWithoutAccountInput;
+    cards?: Prisma.CardUncheckedCreateNestedManyWithoutAccountInput;
+    savingsGoals?: Prisma.SavingsGoalUncheckedCreateNestedManyWithoutAccountInput;
+    loans?: Prisma.LoanUncheckedCreateNestedManyWithoutAccountInput;
+};
+export type AccountCreateOrConnectWithoutOutgoingTransfersInput = {
+    where: Prisma.AccountWhereUniqueInput;
+    create: Prisma.XOR<Prisma.AccountCreateWithoutOutgoingTransfersInput, Prisma.AccountUncheckedCreateWithoutOutgoingTransfersInput>;
+};
+export type AccountCreateWithoutIncomingTransfersInput = {
+    id?: string;
+    accountNumber: string;
+    type: $Enums.AccountType;
+    status?: $Enums.AccountStatus;
+    currency?: string;
+    balance?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    user: Prisma.UserCreateNestedOneWithoutAccountsInput;
+    outgoingTransactions?: Prisma.TransactionCreateNestedManyWithoutSenderAccountInput;
+    incomingTransactions?: Prisma.TransactionCreateNestedManyWithoutRecipientAccountInput;
+    outgoingTransfers?: Prisma.TransferCreateNestedManyWithoutFromAccountInput;
+    ledgerEntries?: Prisma.LedgerEntryCreateNestedManyWithoutAccountInput;
+    cards?: Prisma.CardCreateNestedManyWithoutAccountInput;
+    savingsGoals?: Prisma.SavingsGoalCreateNestedManyWithoutAccountInput;
+    loans?: Prisma.LoanCreateNestedManyWithoutAccountInput;
+};
+export type AccountUncheckedCreateWithoutIncomingTransfersInput = {
+    id?: string;
+    userId: string;
+    accountNumber: string;
+    type: $Enums.AccountType;
+    status?: $Enums.AccountStatus;
+    currency?: string;
+    balance?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    outgoingTransactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutSenderAccountInput;
+    incomingTransactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutRecipientAccountInput;
+    outgoingTransfers?: Prisma.TransferUncheckedCreateNestedManyWithoutFromAccountInput;
+    ledgerEntries?: Prisma.LedgerEntryUncheckedCreateNestedManyWithoutAccountInput;
+    cards?: Prisma.CardUncheckedCreateNestedManyWithoutAccountInput;
+    savingsGoals?: Prisma.SavingsGoalUncheckedCreateNestedManyWithoutAccountInput;
+    loans?: Prisma.LoanUncheckedCreateNestedManyWithoutAccountInput;
+};
+export type AccountCreateOrConnectWithoutIncomingTransfersInput = {
+    where: Prisma.AccountWhereUniqueInput;
+    create: Prisma.XOR<Prisma.AccountCreateWithoutIncomingTransfersInput, Prisma.AccountUncheckedCreateWithoutIncomingTransfersInput>;
+};
+export type AccountUpsertWithoutOutgoingTransfersInput = {
+    update: Prisma.XOR<Prisma.AccountUpdateWithoutOutgoingTransfersInput, Prisma.AccountUncheckedUpdateWithoutOutgoingTransfersInput>;
+    create: Prisma.XOR<Prisma.AccountCreateWithoutOutgoingTransfersInput, Prisma.AccountUncheckedCreateWithoutOutgoingTransfersInput>;
+    where?: Prisma.AccountWhereInput;
+};
+export type AccountUpdateToOneWithWhereWithoutOutgoingTransfersInput = {
+    where?: Prisma.AccountWhereInput;
+    data: Prisma.XOR<Prisma.AccountUpdateWithoutOutgoingTransfersInput, Prisma.AccountUncheckedUpdateWithoutOutgoingTransfersInput>;
+};
+export type AccountUpdateWithoutOutgoingTransfersInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    accountNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    type?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType;
+    status?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    user?: Prisma.UserUpdateOneRequiredWithoutAccountsNestedInput;
+    outgoingTransactions?: Prisma.TransactionUpdateManyWithoutSenderAccountNestedInput;
+    incomingTransactions?: Prisma.TransactionUpdateManyWithoutRecipientAccountNestedInput;
+    incomingTransfers?: Prisma.TransferUpdateManyWithoutToAccountNestedInput;
+    ledgerEntries?: Prisma.LedgerEntryUpdateManyWithoutAccountNestedInput;
+    cards?: Prisma.CardUpdateManyWithoutAccountNestedInput;
+    savingsGoals?: Prisma.SavingsGoalUpdateManyWithoutAccountNestedInput;
+    loans?: Prisma.LoanUpdateManyWithoutAccountNestedInput;
+};
+export type AccountUncheckedUpdateWithoutOutgoingTransfersInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    userId?: Prisma.StringFieldUpdateOperationsInput | string;
+    accountNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    type?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType;
+    status?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    outgoingTransactions?: Prisma.TransactionUncheckedUpdateManyWithoutSenderAccountNestedInput;
+    incomingTransactions?: Prisma.TransactionUncheckedUpdateManyWithoutRecipientAccountNestedInput;
+    incomingTransfers?: Prisma.TransferUncheckedUpdateManyWithoutToAccountNestedInput;
+    ledgerEntries?: Prisma.LedgerEntryUncheckedUpdateManyWithoutAccountNestedInput;
+    cards?: Prisma.CardUncheckedUpdateManyWithoutAccountNestedInput;
+    savingsGoals?: Prisma.SavingsGoalUncheckedUpdateManyWithoutAccountNestedInput;
+    loans?: Prisma.LoanUncheckedUpdateManyWithoutAccountNestedInput;
+};
+export type AccountUpsertWithoutIncomingTransfersInput = {
+    update: Prisma.XOR<Prisma.AccountUpdateWithoutIncomingTransfersInput, Prisma.AccountUncheckedUpdateWithoutIncomingTransfersInput>;
+    create: Prisma.XOR<Prisma.AccountCreateWithoutIncomingTransfersInput, Prisma.AccountUncheckedCreateWithoutIncomingTransfersInput>;
+    where?: Prisma.AccountWhereInput;
+};
+export type AccountUpdateToOneWithWhereWithoutIncomingTransfersInput = {
+    where?: Prisma.AccountWhereInput;
+    data: Prisma.XOR<Prisma.AccountUpdateWithoutIncomingTransfersInput, Prisma.AccountUncheckedUpdateWithoutIncomingTransfersInput>;
+};
+export type AccountUpdateWithoutIncomingTransfersInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    accountNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    type?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType;
+    status?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    user?: Prisma.UserUpdateOneRequiredWithoutAccountsNestedInput;
+    outgoingTransactions?: Prisma.TransactionUpdateManyWithoutSenderAccountNestedInput;
+    incomingTransactions?: Prisma.TransactionUpdateManyWithoutRecipientAccountNestedInput;
+    outgoingTransfers?: Prisma.TransferUpdateManyWithoutFromAccountNestedInput;
+    ledgerEntries?: Prisma.LedgerEntryUpdateManyWithoutAccountNestedInput;
+    cards?: Prisma.CardUpdateManyWithoutAccountNestedInput;
+    savingsGoals?: Prisma.SavingsGoalUpdateManyWithoutAccountNestedInput;
+    loans?: Prisma.LoanUpdateManyWithoutAccountNestedInput;
+};
+export type AccountUncheckedUpdateWithoutIncomingTransfersInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    userId?: Prisma.StringFieldUpdateOperationsInput | string;
+    accountNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    type?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType;
+    status?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    outgoingTransactions?: Prisma.TransactionUncheckedUpdateManyWithoutSenderAccountNestedInput;
+    incomingTransactions?: Prisma.TransactionUncheckedUpdateManyWithoutRecipientAccountNestedInput;
+    outgoingTransfers?: Prisma.TransferUncheckedUpdateManyWithoutFromAccountNestedInput;
+    ledgerEntries?: Prisma.LedgerEntryUncheckedUpdateManyWithoutAccountNestedInput;
+    cards?: Prisma.CardUncheckedUpdateManyWithoutAccountNestedInput;
+    savingsGoals?: Prisma.SavingsGoalUncheckedUpdateManyWithoutAccountNestedInput;
+    loans?: Prisma.LoanUncheckedUpdateManyWithoutAccountNestedInput;
+};
+export type AccountCreateWithoutLedgerEntriesInput = {
+    id?: string;
+    accountNumber: string;
+    type: $Enums.AccountType;
+    status?: $Enums.AccountStatus;
+    currency?: string;
+    balance?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    user: Prisma.UserCreateNestedOneWithoutAccountsInput;
+    outgoingTransactions?: Prisma.TransactionCreateNestedManyWithoutSenderAccountInput;
+    incomingTransactions?: Prisma.TransactionCreateNestedManyWithoutRecipientAccountInput;
+    outgoingTransfers?: Prisma.TransferCreateNestedManyWithoutFromAccountInput;
+    incomingTransfers?: Prisma.TransferCreateNestedManyWithoutToAccountInput;
+    cards?: Prisma.CardCreateNestedManyWithoutAccountInput;
+    savingsGoals?: Prisma.SavingsGoalCreateNestedManyWithoutAccountInput;
+    loans?: Prisma.LoanCreateNestedManyWithoutAccountInput;
+};
+export type AccountUncheckedCreateWithoutLedgerEntriesInput = {
+    id?: string;
+    userId: string;
+    accountNumber: string;
+    type: $Enums.AccountType;
+    status?: $Enums.AccountStatus;
+    currency?: string;
+    balance?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    outgoingTransactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutSenderAccountInput;
+    incomingTransactions?: Prisma.TransactionUncheckedCreateNestedManyWithoutRecipientAccountInput;
+    outgoingTransfers?: Prisma.TransferUncheckedCreateNestedManyWithoutFromAccountInput;
+    incomingTransfers?: Prisma.TransferUncheckedCreateNestedManyWithoutToAccountInput;
+    cards?: Prisma.CardUncheckedCreateNestedManyWithoutAccountInput;
+    savingsGoals?: Prisma.SavingsGoalUncheckedCreateNestedManyWithoutAccountInput;
+    loans?: Prisma.LoanUncheckedCreateNestedManyWithoutAccountInput;
+};
+export type AccountCreateOrConnectWithoutLedgerEntriesInput = {
+    where: Prisma.AccountWhereUniqueInput;
+    create: Prisma.XOR<Prisma.AccountCreateWithoutLedgerEntriesInput, Prisma.AccountUncheckedCreateWithoutLedgerEntriesInput>;
+};
+export type AccountUpsertWithoutLedgerEntriesInput = {
+    update: Prisma.XOR<Prisma.AccountUpdateWithoutLedgerEntriesInput, Prisma.AccountUncheckedUpdateWithoutLedgerEntriesInput>;
+    create: Prisma.XOR<Prisma.AccountCreateWithoutLedgerEntriesInput, Prisma.AccountUncheckedCreateWithoutLedgerEntriesInput>;
+    where?: Prisma.AccountWhereInput;
+};
+export type AccountUpdateToOneWithWhereWithoutLedgerEntriesInput = {
+    where?: Prisma.AccountWhereInput;
+    data: Prisma.XOR<Prisma.AccountUpdateWithoutLedgerEntriesInput, Prisma.AccountUncheckedUpdateWithoutLedgerEntriesInput>;
+};
+export type AccountUpdateWithoutLedgerEntriesInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    accountNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    type?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType;
+    status?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    user?: Prisma.UserUpdateOneRequiredWithoutAccountsNestedInput;
+    outgoingTransactions?: Prisma.TransactionUpdateManyWithoutSenderAccountNestedInput;
+    incomingTransactions?: Prisma.TransactionUpdateManyWithoutRecipientAccountNestedInput;
+    outgoingTransfers?: Prisma.TransferUpdateManyWithoutFromAccountNestedInput;
+    incomingTransfers?: Prisma.TransferUpdateManyWithoutToAccountNestedInput;
+    cards?: Prisma.CardUpdateManyWithoutAccountNestedInput;
+    savingsGoals?: Prisma.SavingsGoalUpdateManyWithoutAccountNestedInput;
+    loans?: Prisma.LoanUpdateManyWithoutAccountNestedInput;
+};
+export type AccountUncheckedUpdateWithoutLedgerEntriesInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    userId?: Prisma.StringFieldUpdateOperationsInput | string;
+    accountNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    type?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType;
+    status?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    outgoingTransactions?: Prisma.TransactionUncheckedUpdateManyWithoutSenderAccountNestedInput;
+    incomingTransactions?: Prisma.TransactionUncheckedUpdateManyWithoutRecipientAccountNestedInput;
+    outgoingTransfers?: Prisma.TransferUncheckedUpdateManyWithoutFromAccountNestedInput;
+    incomingTransfers?: Prisma.TransferUncheckedUpdateManyWithoutToAccountNestedInput;
+    cards?: Prisma.CardUncheckedUpdateManyWithoutAccountNestedInput;
+    savingsGoals?: Prisma.SavingsGoalUncheckedUpdateManyWithoutAccountNestedInput;
+    loans?: Prisma.LoanUncheckedUpdateManyWithoutAccountNestedInput;
+};
+export type AccountCreateManyUserInput = {
+    id?: string;
+    accountNumber: string;
+    type: $Enums.AccountType;
+    status?: $Enums.AccountStatus;
+    currency?: string;
+    balance?: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type AccountUpdateWithoutUserInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    accountNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    type?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType;
+    status?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    outgoingTransactions?: Prisma.TransactionUpdateManyWithoutSenderAccountNestedInput;
+    incomingTransactions?: Prisma.TransactionUpdateManyWithoutRecipientAccountNestedInput;
+    outgoingTransfers?: Prisma.TransferUpdateManyWithoutFromAccountNestedInput;
+    incomingTransfers?: Prisma.TransferUpdateManyWithoutToAccountNestedInput;
+    ledgerEntries?: Prisma.LedgerEntryUpdateManyWithoutAccountNestedInput;
+    cards?: Prisma.CardUpdateManyWithoutAccountNestedInput;
+    savingsGoals?: Prisma.SavingsGoalUpdateManyWithoutAccountNestedInput;
+    loans?: Prisma.LoanUpdateManyWithoutAccountNestedInput;
+};
+export type AccountUncheckedUpdateWithoutUserInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    accountNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    type?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType;
+    status?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    outgoingTransactions?: Prisma.TransactionUncheckedUpdateManyWithoutSenderAccountNestedInput;
+    incomingTransactions?: Prisma.TransactionUncheckedUpdateManyWithoutRecipientAccountNestedInput;
+    outgoingTransfers?: Prisma.TransferUncheckedUpdateManyWithoutFromAccountNestedInput;
+    incomingTransfers?: Prisma.TransferUncheckedUpdateManyWithoutToAccountNestedInput;
+    ledgerEntries?: Prisma.LedgerEntryUncheckedUpdateManyWithoutAccountNestedInput;
+    cards?: Prisma.CardUncheckedUpdateManyWithoutAccountNestedInput;
+    savingsGoals?: Prisma.SavingsGoalUncheckedUpdateManyWithoutAccountNestedInput;
+    loans?: Prisma.LoanUncheckedUpdateManyWithoutAccountNestedInput;
+};
+export type AccountUncheckedUpdateManyWithoutUserInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    accountNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    type?: Prisma.EnumAccountTypeFieldUpdateOperationsInput | $Enums.AccountType;
+    status?: Prisma.EnumAccountStatusFieldUpdateOperationsInput | $Enums.AccountStatus;
+    currency?: Prisma.StringFieldUpdateOperationsInput | string;
+    balance?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+/**
+ * Count Type AccountCountOutputType
+ */
+export type AccountCountOutputType = {
+    outgoingTransactions: number;
+    incomingTransactions: number;
+    outgoingTransfers: number;
+    incomingTransfers: number;
+    ledgerEntries: number;
+    cards: number;
+    savingsGoals: number;
+    loans: number;
+};
+export type AccountCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    outgoingTransactions?: boolean | AccountCountOutputTypeCountOutgoingTransactionsArgs;
+    incomingTransactions?: boolean | AccountCountOutputTypeCountIncomingTransactionsArgs;
+    outgoingTransfers?: boolean | AccountCountOutputTypeCountOutgoingTransfersArgs;
+    incomingTransfers?: boolean | AccountCountOutputTypeCountIncomingTransfersArgs;
+    ledgerEntries?: boolean | AccountCountOutputTypeCountLedgerEntriesArgs;
+    cards?: boolean | AccountCountOutputTypeCountCardsArgs;
+    savingsGoals?: boolean | AccountCountOutputTypeCountSavingsGoalsArgs;
+    loans?: boolean | AccountCountOutputTypeCountLoansArgs;
+};
+/**
+ * AccountCountOutputType without action
+ */
+export type AccountCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AccountCountOutputType
+     */
+    select?: Prisma.AccountCountOutputTypeSelect<ExtArgs> | null;
+};
+/**
+ * AccountCountOutputType without action
+ */
+export type AccountCountOutputTypeCountOutgoingTransactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.TransactionWhereInput;
+};
+/**
+ * AccountCountOutputType without action
+ */
+export type AccountCountOutputTypeCountIncomingTransactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.TransactionWhereInput;
+};
+/**
+ * AccountCountOutputType without action
+ */
+export type AccountCountOutputTypeCountOutgoingTransfersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.TransferWhereInput;
+};
+/**
+ * AccountCountOutputType without action
+ */
+export type AccountCountOutputTypeCountIncomingTransfersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.TransferWhereInput;
+};
+/**
+ * AccountCountOutputType without action
+ */
+export type AccountCountOutputTypeCountLedgerEntriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.LedgerEntryWhereInput;
+};
+/**
+ * AccountCountOutputType without action
+ */
+export type AccountCountOutputTypeCountCardsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.CardWhereInput;
+};
+/**
+ * AccountCountOutputType without action
+ */
+export type AccountCountOutputTypeCountSavingsGoalsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.SavingsGoalWhereInput;
+};
+/**
+ * AccountCountOutputType without action
+ */
+export type AccountCountOutputTypeCountLoansArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.LoanWhereInput;
+};
+export type AccountSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    userId?: boolean;
+    accountNumber?: boolean;
+    type?: boolean;
+    status?: boolean;
+    currency?: boolean;
+    balance?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    outgoingTransactions?: boolean | Prisma.Account$outgoingTransactionsArgs<ExtArgs>;
+    incomingTransactions?: boolean | Prisma.Account$incomingTransactionsArgs<ExtArgs>;
+    outgoingTransfers?: boolean | Prisma.Account$outgoingTransfersArgs<ExtArgs>;
+    incomingTransfers?: boolean | Prisma.Account$incomingTransfersArgs<ExtArgs>;
+    ledgerEntries?: boolean | Prisma.Account$ledgerEntriesArgs<ExtArgs>;
+    cards?: boolean | Prisma.Account$cardsArgs<ExtArgs>;
+    savingsGoals?: boolean | Prisma.Account$savingsGoalsArgs<ExtArgs>;
+    loans?: boolean | Prisma.Account$loansArgs<ExtArgs>;
+    _count?: boolean | Prisma.AccountCountOutputTypeDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["account"]>;
+export type AccountSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    userId?: boolean;
+    accountNumber?: boolean;
+    type?: boolean;
+    status?: boolean;
+    currency?: boolean;
+    balance?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["account"]>;
+export type AccountSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    userId?: boolean;
+    accountNumber?: boolean;
+    type?: boolean;
+    status?: boolean;
+    currency?: boolean;
+    balance?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["account"]>;
+export type AccountSelectScalar = {
+    id?: boolean;
+    userId?: boolean;
+    accountNumber?: boolean;
+    type?: boolean;
+    status?: boolean;
+    currency?: boolean;
+    balance?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+};
+export type AccountOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "accountNumber" | "type" | "status" | "currency" | "balance" | "createdAt" | "updatedAt", ExtArgs["result"]["account"]>;
+export type AccountInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    outgoingTransactions?: boolean | Prisma.Account$outgoingTransactionsArgs<ExtArgs>;
+    incomingTransactions?: boolean | Prisma.Account$incomingTransactionsArgs<ExtArgs>;
+    outgoingTransfers?: boolean | Prisma.Account$outgoingTransfersArgs<ExtArgs>;
+    incomingTransfers?: boolean | Prisma.Account$incomingTransfersArgs<ExtArgs>;
+    ledgerEntries?: boolean | Prisma.Account$ledgerEntriesArgs<ExtArgs>;
+    cards?: boolean | Prisma.Account$cardsArgs<ExtArgs>;
+    savingsGoals?: boolean | Prisma.Account$savingsGoalsArgs<ExtArgs>;
+    loans?: boolean | Prisma.Account$loansArgs<ExtArgs>;
+    _count?: boolean | Prisma.AccountCountOutputTypeDefaultArgs<ExtArgs>;
+};
+export type AccountIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+};
+export type AccountIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+};
+export type $AccountPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    name: "Account";
+    objects: {
+        user: Prisma.$UserPayload<ExtArgs>;
+        outgoingTransactions: Prisma.$TransactionPayload<ExtArgs>[];
+        incomingTransactions: Prisma.$TransactionPayload<ExtArgs>[];
+        outgoingTransfers: Prisma.$TransferPayload<ExtArgs>[];
+        incomingTransfers: Prisma.$TransferPayload<ExtArgs>[];
+        ledgerEntries: Prisma.$LedgerEntryPayload<ExtArgs>[];
+        cards: Prisma.$CardPayload<ExtArgs>[];
+        savingsGoals: Prisma.$SavingsGoalPayload<ExtArgs>[];
+        loans: Prisma.$LoanPayload<ExtArgs>[];
+    };
+    scalars: runtime.Types.Extensions.GetPayloadResult<{
+        id: string;
+        userId: string;
+        accountNumber: string;
+        type: $Enums.AccountType;
+        status: $Enums.AccountStatus;
+        currency: string;
+        balance: runtime.Decimal;
+        createdAt: Date;
+        updatedAt: Date;
+    }, ExtArgs["result"]["account"]>;
+    composites: {};
+};
+export type AccountGetPayload<S extends boolean | null | undefined | AccountDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$AccountPayload, S>;
+export type AccountCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = Omit<AccountFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+    select?: AccountCountAggregateInputType | true;
+};
+export interface AccountDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: {
+        types: Prisma.TypeMap<ExtArgs>['model']['Account'];
+        meta: {
+            name: 'Account';
+        };
+    };
+    /**
+     * Find zero or one Account that matches the filter.
+     * @param {AccountFindUniqueArgs} args - Arguments to find a Account
+     * @example
+     * // Get one Account
+     * const account = await prisma.account.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AccountFindUniqueArgs>(args: Prisma.SelectSubset<T, AccountFindUniqueArgs<ExtArgs>>): Prisma.Prisma__AccountClient<runtime.Types.Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find one Account that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AccountFindUniqueOrThrowArgs} args - Arguments to find a Account
+     * @example
+     * // Get one Account
+     * const account = await prisma.account.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AccountFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, AccountFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__AccountClient<runtime.Types.Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find the first Account that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AccountFindFirstArgs} args - Arguments to find a Account
+     * @example
+     * // Get one Account
+     * const account = await prisma.account.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AccountFindFirstArgs>(args?: Prisma.SelectSubset<T, AccountFindFirstArgs<ExtArgs>>): Prisma.Prisma__AccountClient<runtime.Types.Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find the first Account that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AccountFindFirstOrThrowArgs} args - Arguments to find a Account
+     * @example
+     * // Get one Account
+     * const account = await prisma.account.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AccountFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, AccountFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__AccountClient<runtime.Types.Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find zero or more Accounts that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AccountFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Accounts
+     * const accounts = await prisma.account.findMany()
+     *
+     * // Get first 10 Accounts
+     * const accounts = await prisma.account.findMany({ take: 10 })
+     *
+     * // Only select the `id`
+     * const accountWithIdOnly = await prisma.account.findMany({ select: { id: true } })
+     *
+     */
+    findMany<T extends AccountFindManyArgs>(args?: Prisma.SelectSubset<T, AccountFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>;
+    /**
+     * Create a Account.
+     * @param {AccountCreateArgs} args - Arguments to create a Account.
+     * @example
+     * // Create one Account
+     * const Account = await prisma.account.create({
+     *   data: {
+     *     // ... data to create a Account
+     *   }
+     * })
+     *
+     */
+    create<T extends AccountCreateArgs>(args: Prisma.SelectSubset<T, AccountCreateArgs<ExtArgs>>): Prisma.Prisma__AccountClient<runtime.Types.Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Create many Accounts.
+     * @param {AccountCreateManyArgs} args - Arguments to create many Accounts.
+     * @example
+     * // Create many Accounts
+     * const account = await prisma.account.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     */
+    createMany<T extends AccountCreateManyArgs>(args?: Prisma.SelectSubset<T, AccountCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Create many Accounts and returns the data saved in the database.
+     * @param {AccountCreateManyAndReturnArgs} args - Arguments to create many Accounts.
+     * @example
+     * // Create many Accounts
+     * const account = await prisma.account.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Create many Accounts and only return the `id`
+     * const accountWithIdOnly = await prisma.account.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    createManyAndReturn<T extends AccountCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, AccountCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>;
+    /**
+     * Delete a Account.
+     * @param {AccountDeleteArgs} args - Arguments to delete one Account.
+     * @example
+     * // Delete one Account
+     * const Account = await prisma.account.delete({
+     *   where: {
+     *     // ... filter to delete one Account
+     *   }
+     * })
+     *
+     */
+    delete<T extends AccountDeleteArgs>(args: Prisma.SelectSubset<T, AccountDeleteArgs<ExtArgs>>): Prisma.Prisma__AccountClient<runtime.Types.Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Update one Account.
+     * @param {AccountUpdateArgs} args - Arguments to update one Account.
+     * @example
+     * // Update one Account
+     * const account = await prisma.account.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends AccountUpdateArgs>(args: Prisma.SelectSubset<T, AccountUpdateArgs<ExtArgs>>): Prisma.Prisma__AccountClient<runtime.Types.Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Delete zero or more Accounts.
+     * @param {AccountDeleteManyArgs} args - Arguments to filter Accounts to delete.
+     * @example
+     * // Delete a few Accounts
+     * const { count } = await prisma.account.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends AccountDeleteManyArgs>(args?: Prisma.SelectSubset<T, AccountDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Update zero or more Accounts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AccountUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Accounts
+     * const account = await prisma.account.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends AccountUpdateManyArgs>(args: Prisma.SelectSubset<T, AccountUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Update zero or more Accounts and returns the data updated in the database.
+     * @param {AccountUpdateManyAndReturnArgs} args - Arguments to update many Accounts.
+     * @example
+     * // Update many Accounts
+     * const account = await prisma.account.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more Accounts and only return the `id`
+     * const accountWithIdOnly = await prisma.account.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends AccountUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, AccountUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>;
+    /**
+     * Create or update one Account.
+     * @param {AccountUpsertArgs} args - Arguments to update or create a Account.
+     * @example
+     * // Update or create a Account
+     * const account = await prisma.account.upsert({
+     *   create: {
+     *     // ... data to create a Account
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Account we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AccountUpsertArgs>(args: Prisma.SelectSubset<T, AccountUpsertArgs<ExtArgs>>): Prisma.Prisma__AccountClient<runtime.Types.Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Count the number of Accounts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AccountCountArgs} args - Arguments to filter Accounts to count.
+     * @example
+     * // Count the number of Accounts
+     * const count = await prisma.account.count({
+     *   where: {
+     *     // ... the filter for the Accounts we want to count
+     *   }
+     * })
+    **/
+    count<T extends AccountCountArgs>(args?: Prisma.Subset<T, AccountCountArgs>): Prisma.PrismaPromise<T extends runtime.Types.Utils.Record<'select', any> ? T['select'] extends true ? number : Prisma.GetScalarType<T['select'], AccountCountAggregateOutputType> : number>;
+    /**
+     * Allows you to perform aggregations operations on a Account.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AccountAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AccountAggregateArgs>(args: Prisma.Subset<T, AccountAggregateArgs>): Prisma.PrismaPromise<GetAccountAggregateType<T>>;
+    /**
+     * Group by Account.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AccountGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+    **/
+    groupBy<T extends AccountGroupByArgs, HasSelectOrTake extends Prisma.Or<Prisma.Extends<'skip', Prisma.Keys<T>>, Prisma.Extends<'take', Prisma.Keys<T>>>, OrderByArg extends Prisma.True extends HasSelectOrTake ? {
+        orderBy: AccountGroupByArgs['orderBy'];
+    } : {
+        orderBy?: AccountGroupByArgs['orderBy'];
+    }, OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>, ByFields extends Prisma.MaybeTupleToUnion<T['by']>, ByValid extends Prisma.Has<ByFields, OrderFields>, HavingFields extends Prisma.GetHavingFields<T['having']>, HavingValid extends Prisma.Has<ByFields, HavingFields>, ByEmpty extends T['by'] extends never[] ? Prisma.True : Prisma.False, InputErrors extends ByEmpty extends Prisma.True ? `Error: "by" must not be empty.` : HavingValid extends Prisma.False ? {
+        [P in HavingFields]: P extends ByFields ? never : P extends string ? `Error: Field "${P}" used in "having" needs to be provided in "by".` : [
+            Error,
+            'Field ',
+            P,
+            ` in "having" needs to be provided in "by"`
+        ];
+    }[HavingFields] : 'take' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "take", you also need to provide "orderBy"' : 'skip' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "skip", you also need to provide "orderBy"' : ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields]>(args: Prisma.SubsetIntersection<T, AccountGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAccountGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
+    /**
+     * Fields of the Account model
+     */
+    readonly fields: AccountFieldRefs;
+}
+/**
+ * The delegate class that acts as a "Promise-like" for Account.
+ * Why is this prefixed with `Prisma__`?
+ * Because we want to prevent naming conflicts as mentioned in
+ * https://github.com/prisma/prisma-client-js/issues/707
+ */
+export interface Prisma__AccountClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise";
+    user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
+    outgoingTransactions<T extends Prisma.Account$outgoingTransactionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Account$outgoingTransactionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    incomingTransactions<T extends Prisma.Account$incomingTransactionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Account$incomingTransactionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TransactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    outgoingTransfers<T extends Prisma.Account$outgoingTransfersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Account$outgoingTransfersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TransferPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    incomingTransfers<T extends Prisma.Account$incomingTransfersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Account$incomingTransfersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TransferPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    ledgerEntries<T extends Prisma.Account$ledgerEntriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Account$ledgerEntriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LedgerEntryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    cards<T extends Prisma.Account$cardsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Account$cardsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CardPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    savingsGoals<T extends Prisma.Account$savingsGoalsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Account$savingsGoalsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SavingsGoalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    loans<T extends Prisma.Account$loansArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Account$loansArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LoanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): runtime.Types.Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
+}
+/**
+ * Fields of the Account model
+ */
+export interface AccountFieldRefs {
+    readonly id: Prisma.FieldRef<"Account", 'String'>;
+    readonly userId: Prisma.FieldRef<"Account", 'String'>;
+    readonly accountNumber: Prisma.FieldRef<"Account", 'String'>;
+    readonly type: Prisma.FieldRef<"Account", 'AccountType'>;
+    readonly status: Prisma.FieldRef<"Account", 'AccountStatus'>;
+    readonly currency: Prisma.FieldRef<"Account", 'String'>;
+    readonly balance: Prisma.FieldRef<"Account", 'Decimal'>;
+    readonly createdAt: Prisma.FieldRef<"Account", 'DateTime'>;
+    readonly updatedAt: Prisma.FieldRef<"Account", 'DateTime'>;
+}
+/**
+ * Account findUnique
+ */
+export type AccountFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Account
+     */
+    select?: Prisma.AccountSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Account
+     */
+    omit?: Prisma.AccountOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.AccountInclude<ExtArgs> | null;
+    /**
+     * Filter, which Account to fetch.
+     */
+    where: Prisma.AccountWhereUniqueInput;
+};
+/**
+ * Account findUniqueOrThrow
+ */
+export type AccountFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Account
+     */
+    select?: Prisma.AccountSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Account
+     */
+    omit?: Prisma.AccountOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.AccountInclude<ExtArgs> | null;
+    /**
+     * Filter, which Account to fetch.
+     */
+    where: Prisma.AccountWhereUniqueInput;
+};
+/**
+ * Account findFirst
+ */
+export type AccountFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Account
+     */
+    select?: Prisma.AccountSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Account
+     */
+    omit?: Prisma.AccountOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.AccountInclude<ExtArgs> | null;
+    /**
+     * Filter, which Account to fetch.
+     */
+    where?: Prisma.AccountWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Accounts to fetch.
+     */
+    orderBy?: Prisma.AccountOrderByWithRelationInput | Prisma.AccountOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for Accounts.
+     */
+    cursor?: Prisma.AccountWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Accounts from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Accounts.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of Accounts.
+     */
+    distinct?: Prisma.AccountScalarFieldEnum | Prisma.AccountScalarFieldEnum[];
+};
+/**
+ * Account findFirstOrThrow
+ */
+export type AccountFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Account
+     */
+    select?: Prisma.AccountSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Account
+     */
+    omit?: Prisma.AccountOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.AccountInclude<ExtArgs> | null;
+    /**
+     * Filter, which Account to fetch.
+     */
+    where?: Prisma.AccountWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Accounts to fetch.
+     */
+    orderBy?: Prisma.AccountOrderByWithRelationInput | Prisma.AccountOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for Accounts.
+     */
+    cursor?: Prisma.AccountWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Accounts from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Accounts.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of Accounts.
+     */
+    distinct?: Prisma.AccountScalarFieldEnum | Prisma.AccountScalarFieldEnum[];
+};
+/**
+ * Account findMany
+ */
+export type AccountFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Account
+     */
+    select?: Prisma.AccountSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Account
+     */
+    omit?: Prisma.AccountOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.AccountInclude<ExtArgs> | null;
+    /**
+     * Filter, which Accounts to fetch.
+     */
+    where?: Prisma.AccountWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Accounts to fetch.
+     */
+    orderBy?: Prisma.AccountOrderByWithRelationInput | Prisma.AccountOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for listing Accounts.
+     */
+    cursor?: Prisma.AccountWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Accounts from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Accounts.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of Accounts.
+     */
+    distinct?: Prisma.AccountScalarFieldEnum | Prisma.AccountScalarFieldEnum[];
+};
+/**
+ * Account create
+ */
+export type AccountCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Account
+     */
+    select?: Prisma.AccountSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Account
+     */
+    omit?: Prisma.AccountOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.AccountInclude<ExtArgs> | null;
+    /**
+     * The data needed to create a Account.
+     */
+    data: Prisma.XOR<Prisma.AccountCreateInput, Prisma.AccountUncheckedCreateInput>;
+};
+/**
+ * Account createMany
+ */
+export type AccountCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Accounts.
+     */
+    data: Prisma.AccountCreateManyInput | Prisma.AccountCreateManyInput[];
+    skipDuplicates?: boolean;
+};
+/**
+ * Account createManyAndReturn
+ */
+export type AccountCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Account
+     */
+    select?: Prisma.AccountSelectCreateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Account
+     */
+    omit?: Prisma.AccountOmit<ExtArgs> | null;
+    /**
+     * The data used to create many Accounts.
+     */
+    data: Prisma.AccountCreateManyInput | Prisma.AccountCreateManyInput[];
+    skipDuplicates?: boolean;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.AccountIncludeCreateManyAndReturn<ExtArgs> | null;
+};
+/**
+ * Account update
+ */
+export type AccountUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Account
+     */
+    select?: Prisma.AccountSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Account
+     */
+    omit?: Prisma.AccountOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.AccountInclude<ExtArgs> | null;
+    /**
+     * The data needed to update a Account.
+     */
+    data: Prisma.XOR<Prisma.AccountUpdateInput, Prisma.AccountUncheckedUpdateInput>;
+    /**
+     * Choose, which Account to update.
+     */
+    where: Prisma.AccountWhereUniqueInput;
+};
+/**
+ * Account updateMany
+ */
+export type AccountUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Accounts.
+     */
+    data: Prisma.XOR<Prisma.AccountUpdateManyMutationInput, Prisma.AccountUncheckedUpdateManyInput>;
+    /**
+     * Filter which Accounts to update
+     */
+    where?: Prisma.AccountWhereInput;
+    /**
+     * Limit how many Accounts to update.
+     */
+    limit?: number;
+};
+/**
+ * Account updateManyAndReturn
+ */
+export type AccountUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Account
+     */
+    select?: Prisma.AccountSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Account
+     */
+    omit?: Prisma.AccountOmit<ExtArgs> | null;
+    /**
+     * The data used to update Accounts.
+     */
+    data: Prisma.XOR<Prisma.AccountUpdateManyMutationInput, Prisma.AccountUncheckedUpdateManyInput>;
+    /**
+     * Filter which Accounts to update
+     */
+    where?: Prisma.AccountWhereInput;
+    /**
+     * Limit how many Accounts to update.
+     */
+    limit?: number;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.AccountIncludeUpdateManyAndReturn<ExtArgs> | null;
+};
+/**
+ * Account upsert
+ */
+export type AccountUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Account
+     */
+    select?: Prisma.AccountSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Account
+     */
+    omit?: Prisma.AccountOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.AccountInclude<ExtArgs> | null;
+    /**
+     * The filter to search for the Account to update in case it exists.
+     */
+    where: Prisma.AccountWhereUniqueInput;
+    /**
+     * In case the Account found by the `where` argument doesn't exist, create a new Account with this data.
+     */
+    create: Prisma.XOR<Prisma.AccountCreateInput, Prisma.AccountUncheckedCreateInput>;
+    /**
+     * In case the Account was found with the provided `where` argument, update it with this data.
+     */
+    update: Prisma.XOR<Prisma.AccountUpdateInput, Prisma.AccountUncheckedUpdateInput>;
+};
+/**
+ * Account delete
+ */
+export type AccountDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Account
+     */
+    select?: Prisma.AccountSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Account
+     */
+    omit?: Prisma.AccountOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.AccountInclude<ExtArgs> | null;
+    /**
+     * Filter which Account to delete.
+     */
+    where: Prisma.AccountWhereUniqueInput;
+};
+/**
+ * Account deleteMany
+ */
+export type AccountDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Filter which Accounts to delete
+     */
+    where?: Prisma.AccountWhereInput;
+    /**
+     * Limit how many Accounts to delete.
+     */
+    limit?: number;
+};
+/**
+ * Account.outgoingTransactions
+ */
+export type Account$outgoingTransactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transaction
+     */
+    select?: Prisma.TransactionSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Transaction
+     */
+    omit?: Prisma.TransactionOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.TransactionInclude<ExtArgs> | null;
+    where?: Prisma.TransactionWhereInput;
+    orderBy?: Prisma.TransactionOrderByWithRelationInput | Prisma.TransactionOrderByWithRelationInput[];
+    cursor?: Prisma.TransactionWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.TransactionScalarFieldEnum | Prisma.TransactionScalarFieldEnum[];
+};
+/**
+ * Account.incomingTransactions
+ */
+export type Account$incomingTransactionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transaction
+     */
+    select?: Prisma.TransactionSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Transaction
+     */
+    omit?: Prisma.TransactionOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.TransactionInclude<ExtArgs> | null;
+    where?: Prisma.TransactionWhereInput;
+    orderBy?: Prisma.TransactionOrderByWithRelationInput | Prisma.TransactionOrderByWithRelationInput[];
+    cursor?: Prisma.TransactionWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.TransactionScalarFieldEnum | Prisma.TransactionScalarFieldEnum[];
+};
+/**
+ * Account.outgoingTransfers
+ */
+export type Account$outgoingTransfersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transfer
+     */
+    select?: Prisma.TransferSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Transfer
+     */
+    omit?: Prisma.TransferOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.TransferInclude<ExtArgs> | null;
+    where?: Prisma.TransferWhereInput;
+    orderBy?: Prisma.TransferOrderByWithRelationInput | Prisma.TransferOrderByWithRelationInput[];
+    cursor?: Prisma.TransferWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.TransferScalarFieldEnum | Prisma.TransferScalarFieldEnum[];
+};
+/**
+ * Account.incomingTransfers
+ */
+export type Account$incomingTransfersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Transfer
+     */
+    select?: Prisma.TransferSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Transfer
+     */
+    omit?: Prisma.TransferOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.TransferInclude<ExtArgs> | null;
+    where?: Prisma.TransferWhereInput;
+    orderBy?: Prisma.TransferOrderByWithRelationInput | Prisma.TransferOrderByWithRelationInput[];
+    cursor?: Prisma.TransferWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.TransferScalarFieldEnum | Prisma.TransferScalarFieldEnum[];
+};
+/**
+ * Account.ledgerEntries
+ */
+export type Account$ledgerEntriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LedgerEntry
+     */
+    select?: Prisma.LedgerEntrySelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the LedgerEntry
+     */
+    omit?: Prisma.LedgerEntryOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.LedgerEntryInclude<ExtArgs> | null;
+    where?: Prisma.LedgerEntryWhereInput;
+    orderBy?: Prisma.LedgerEntryOrderByWithRelationInput | Prisma.LedgerEntryOrderByWithRelationInput[];
+    cursor?: Prisma.LedgerEntryWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.LedgerEntryScalarFieldEnum | Prisma.LedgerEntryScalarFieldEnum[];
+};
+/**
+ * Account.cards
+ */
+export type Account$cardsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Card
+     */
+    select?: Prisma.CardSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Card
+     */
+    omit?: Prisma.CardOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.CardInclude<ExtArgs> | null;
+    where?: Prisma.CardWhereInput;
+    orderBy?: Prisma.CardOrderByWithRelationInput | Prisma.CardOrderByWithRelationInput[];
+    cursor?: Prisma.CardWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.CardScalarFieldEnum | Prisma.CardScalarFieldEnum[];
+};
+/**
+ * Account.savingsGoals
+ */
+export type Account$savingsGoalsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SavingsGoal
+     */
+    select?: Prisma.SavingsGoalSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the SavingsGoal
+     */
+    omit?: Prisma.SavingsGoalOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.SavingsGoalInclude<ExtArgs> | null;
+    where?: Prisma.SavingsGoalWhereInput;
+    orderBy?: Prisma.SavingsGoalOrderByWithRelationInput | Prisma.SavingsGoalOrderByWithRelationInput[];
+    cursor?: Prisma.SavingsGoalWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.SavingsGoalScalarFieldEnum | Prisma.SavingsGoalScalarFieldEnum[];
+};
+/**
+ * Account.loans
+ */
+export type Account$loansArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Loan
+     */
+    select?: Prisma.LoanSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Loan
+     */
+    omit?: Prisma.LoanOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.LoanInclude<ExtArgs> | null;
+    where?: Prisma.LoanWhereInput;
+    orderBy?: Prisma.LoanOrderByWithRelationInput | Prisma.LoanOrderByWithRelationInput[];
+    cursor?: Prisma.LoanWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.LoanScalarFieldEnum | Prisma.LoanScalarFieldEnum[];
+};
+/**
+ * Account without action
+ */
+export type AccountDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Account
+     */
+    select?: Prisma.AccountSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Account
+     */
+    omit?: Prisma.AccountOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.AccountInclude<ExtArgs> | null;
+};

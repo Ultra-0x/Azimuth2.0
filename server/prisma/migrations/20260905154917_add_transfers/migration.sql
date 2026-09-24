@@ -1,0 +1,54 @@
+-- CreateTable
+CREATE TABLE "Transfer" (
+    "id" TEXT NOT NULL,
+    "reference" TEXT NOT NULL,
+    "idempotencyKey" TEXT NOT NULL,
+    "userId" TEXT NOT NULL,
+    "fromAccountId" TEXT NOT NULL,
+    "toAccountId" TEXT NOT NULL,
+    "amount" DECIMAL(19,4) NOT NULL,
+    "currency" TEXT NOT NULL,
+    "description" TEXT,
+    "status" "TransactionStatus" NOT NULL DEFAULT 'PENDING',
+    "transactionId" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Transfer_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Transfer_reference_key" ON "Transfer"("reference");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Transfer_idempotencyKey_key" ON "Transfer"("idempotencyKey");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Transfer_transactionId_key" ON "Transfer"("transactionId");
+
+-- CreateIndex
+CREATE INDEX "Transfer_userId_idx" ON "Transfer"("userId");
+
+-- CreateIndex
+CREATE INDEX "Transfer_fromAccountId_idx" ON "Transfer"("fromAccountId");
+
+-- CreateIndex
+CREATE INDEX "Transfer_toAccountId_idx" ON "Transfer"("toAccountId");
+
+-- CreateIndex
+CREATE INDEX "Transfer_status_idx" ON "Transfer"("status");
+
+-- CreateIndex
+CREATE INDEX "Transfer_createdAt_idx" ON "Transfer"("createdAt");
+
+-- AddForeignKey
+ALTER TABLE "Transfer" ADD CONSTRAINT "Transfer_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Transfer" ADD CONSTRAINT "Transfer_fromAccountId_fkey" FOREIGN KEY ("fromAccountId") REFERENCES "Account"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Transfer" ADD CONSTRAINT "Transfer_toAccountId_fkey" FOREIGN KEY ("toAccountId") REFERENCES "Account"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Transfer" ADD CONSTRAINT "Transfer_transactionId_fkey" FOREIGN KEY ("transactionId") REFERENCES "Transaction"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

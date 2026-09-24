@@ -1,0 +1,66 @@
+import type { CardStatus, CardType } from "../../generated/prisma/client.js";
+export declare function createCard(userId: string, accountId: string, type: CardType): Promise<{
+    card: {
+        accountId: string;
+        blockedAt: Date | null;
+        cancelledAt: Date | null;
+        createdAt: Date;
+        expiryMonth: number;
+        expiryYear: number;
+        frozenAt: Date | null;
+        id: string;
+        lastFour: string;
+        status: CardStatus;
+        type: CardType;
+        updatedAt: Date;
+    };
+    cardNumber: string;
+    cardholderName: string;
+    network: string;
+    accountNumber: string;
+}>;
+export declare function getUserCards(userId: string): Promise<{
+    id: string;
+    accountId: string;
+    type: CardType;
+    status: CardStatus;
+    lastFour: string;
+    expiryMonth: number;
+    expiryYear: number;
+    frozenAt: Date | null;
+    blockedAt: Date | null;
+    cancelledAt: Date | null;
+    createdAt: Date;
+    updatedAt: Date;
+    cardholderName: string;
+    network: "MASTERCARD";
+    accountNumber: string;
+}[]>;
+export declare function getUserCard(userId: string, cardId: string): Promise<{
+    accountId: string;
+    blockedAt: Date | null;
+    cancelledAt: Date | null;
+    createdAt: Date;
+    expiryMonth: number;
+    expiryYear: number;
+    frozenAt: Date | null;
+    id: string;
+    lastFour: string;
+    status: CardStatus;
+    type: CardType;
+    updatedAt: Date;
+} | null>;
+export declare function updateCardStatus(userId: string, cardId: string, status: CardStatus): Promise<{
+    accountId: string;
+    blockedAt: Date | null;
+    cancelledAt: Date | null;
+    createdAt: Date;
+    expiryMonth: number;
+    expiryYear: number;
+    frozenAt: Date | null;
+    id: string;
+    lastFour: string;
+    status: CardStatus;
+    type: CardType;
+    updatedAt: Date;
+}>;

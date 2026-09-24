@@ -1,0 +1,582 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─────────────────────────────────────────────
+// ENUMS
+// ─────────────────────────────────────────────
+
+enum UserStatus {
+  ACTIVE
+  SUSPENDED
+  LOCKED
+  CLOSED
+}
+
+enum AccountType {
+  SAVINGS
+  CURRENT
+  FIXED_DEPOSIT
+}
+
+enum AccountStatus {
+  ACTIVE
+  FROZEN
+  SUSPENDED
+  CLOSED
+}
+
+enum SavingsGoalStatus {
+  ACTIVE
+  COMPLETED
+  PAUSED
+  CANCELLED
+}
+
+enum LoanStatus {
+  PENDING
+  APPROVED
+  ACTIVE
+  PAID
+  REJECTED
+  DEFAULTED
+  CANCELLED
+}
+
+enum LoanRepaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+}
+
+enum TransactionType {
+  DEPOSIT
+  WITHDRAWAL
+  TRANSFER
+  PAYMENT
+  REFUND
+  FEE
+  INTEREST
+  LOAN_DISBURSEMENT
+  LOAN_REPAYMENT
+}
+
+enum TransactionStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+  REVERSED
+  CANCELLED
+}
+
+enum TransactionChannel {
+  INTERNAL
+  BANK_TRANSFER
+  CARD
+  ATM
+  MOBILE
+  WEB
+  SYSTEM
+}
+
+enum LedgerEntryDirection {
+  DEBIT
+  CREDIT
+}
+
+enum CardType {
+  VIRTUAL
+  PHYSICAL
+}
+
+enum CardStatus {
+  ACTIVE
+  FROZEN
+  BLOCKED
+  EXPIRED
+  CANCELLED
+}
+
+enum SupportTicketStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+}
+
+enum SupportTicketPriority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+enum UserRole {
+  CUSTOMER
+  ADMIN
+}
+
+// ─────────────────────────────────────────────
+// USER
+// ─────────────────────────────────────────────
+
+model User {
+  id           String @id @default(cuid())
+  email        String @unique
+  passwordHash String
+
+  firstName String
+  lastName  String
+
+  phone String?
+
+  status UserStatus @default(ACTIVE)
+
+  role UserRole @default(CUSTOMER)
+
+  emailVerifiedAt DateTime?
+
+  failedLoginAttempts Int       @default(0)
+  lockedUntil         DateTime?
+
+  passwordChangedAt DateTime?
+
+  emailVerificationTokenHash String?   @unique
+  emailVerificationExpiresAt DateTime?
+
+  transactionAuthChallenges TransactionAuthChallenge[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  accounts     Account[]
+  savingsGoals SavingsGoal[]
+  transactions Transaction[]
+  sessions     Session[]
+  transfers    Transfer[]
+  cards        Card[]
+  loans        Loan[]
+  notifications Notification[]
+  supportTickets SupportTicket[]
+  supportMessages SupportMessage[]
+}
+
+// ─────────────────────────────────────────────
+// BANK ACCOUNT
+// ─────────────────────────────────────────────
+
+model Account {
+  id String @id @default(cuid())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Restrict)
+
+  accountNumber String @unique
+
+  type   AccountType
+  status AccountStatus @default(ACTIVE)
+
+  currency String @default("USD")
+
+  balance Decimal @default(0) @db.Decimal(19, 4)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  outgoingTransactions Transaction[] @relation("SenderAccount")
+  incomingTransactions Transaction[] @relation("RecipientAccount")
+
+  outgoingTransfers Transfer[] @relation("OutgoingTransfers")
+  incomingTransfers Transfer[] @relation("IncomingTransfers")
+
+  ledgerEntries LedgerEntry[]
+  cards         Card[]
+  savingsGoals SavingsGoal[]
+  loans        Loan[]
+
+  @@index([userId])
+  @@index([status])
+}
+
+model SavingsGoal {
+  id String @id @default(cuid())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Restrict)
+
+  accountId String
+  account   Account @relation(fields: [accountId], references: [id], onDelete: Restrict)
+
+  name String
+
+  targetAmount Decimal @db.Decimal(19, 4)
+  currentAmount Decimal @default(0) @db.Decimal(19, 4)
+
+  currency String @default("USD")
+
+  targetDate DateTime?
+
+  status SavingsGoalStatus @default(ACTIVE)
+
+  contributions SavingsGoalContribution[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([accountId])
+  @@index([status])
+  @@index([targetDate])
+}
+
+model Loan {
+  id String @id @default(cuid())
+
+  userId String
+  user   User @relation(fields: [userId], references: [id], onDelete: Restrict)
+
+  accountId String
+  account   Account @relation(fields: [accountId], references: [id], onDelete: Restrict)
+
+  amount Decimal @db.Decimal(19, 4)
+  interestRate Decimal @db.Decimal(7, 4)
+  totalRepayment Decimal @db.Decimal(19, 4)
+  amountRepaid Decimal @default(0) @db.Decimal(19, 4)
+
+  currency String @default("USD")
+
+  termMonths Int
+
+  status LoanStatus @default(PENDING)
+
+  purpose String?
+
+  approvedAt DateTime?
+  disbursedAt DateTime?
+  dueDate DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  repayments LoanRepayment[]
+
+  @@index([userId])
+  @@index([accountId])
+  @@index([status])
+  @@index([dueDate])
+}
+
+model LoanRepayment {
+  id String @id @default(cuid())
+
+  loanId String
+  loan   Loan @relation(fields: [loanId], references: [id], onDelete: Restrict)
+
+  transactionId String? @unique
+  transaction   Transaction? @relation(fields: [transactionId], references: [id], onDelete: Restrict)
+
+  amount Decimal @db.Decimal(19, 4)
+  currency String
+
+  status LoanRepaymentStatus @default(PENDING)
+
+  dueDate DateTime?
+  paidAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([loanId])
+  @@index([status])
+  @@index([dueDate])
+}
+
+model SupportTicket {
+  id String @id @default(cuid())
+
+  userId String
+  user   User @relation(fields: [userId], references: [id], onDelete: Restrict)
+
+  subject String
+  category String
+
+  priority SupportTicketPriority @default(MEDIUM)
+  status SupportTicketStatus @default(OPEN)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  messages SupportMessage[]
+
+  @@index([userId])
+  @@index([status])
+  @@index([priority])
+  @@index([createdAt])
+}
+
+model SupportMessage {
+  id String @id @default(cuid())
+
+  ticketId String
+  ticket   SupportTicket @relation(fields: [ticketId], references: [id], onDelete: Restrict)
+
+  userId String
+  user   User @relation(fields: [userId], references: [id], onDelete: Restrict)
+
+  message String
+
+  readAt DateTime?
+
+  createdAt DateTime @default(now())
+
+  @@index([ticketId])
+  @@index([userId])
+  @@index([createdAt])
+}
+
+model Card {
+  id String @id @default(cuid())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Restrict)
+
+  accountId String
+  account   Account @relation(fields: [accountId], references: [id], onDelete: Restrict)
+
+  transactions Transaction[]
+
+  type   CardType
+  status CardStatus @default(ACTIVE)
+
+  cardNumberHash String @unique
+  lastFour       String
+
+  expiryMonth Int
+  expiryYear  Int
+
+  frozenAt    DateTime?
+  blockedAt   DateTime?
+  cancelledAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([accountId])
+  @@index([status])
+  @@index([expiryYear, expiryMonth])
+}
+
+// ─────────────────────────────────────────────
+// TRANSACTION
+// ─────────────────────────────────────────────
+
+model Transaction {
+  id String @id @default(cuid())
+
+  reference String @unique
+
+  idempotencyKey String? @unique
+
+  type   TransactionType
+  status TransactionStatus @default(PENDING)
+
+  amount   Decimal @db.Decimal(19, 4)
+  currency String  @default("USD")
+
+  description String?
+
+  channel TransactionChannel
+
+  cardId String?
+  card   Card? @relation(fields: [cardId], references: [id], onDelete: Restrict)
+
+  senderAccountId    String?
+  recipientAccountId String?
+
+  senderAccount    Account? @relation("SenderAccount", fields: [senderAccountId], references: [id])
+  recipientAccount Account? @relation("RecipientAccount", fields: [recipientAccountId], references: [id])
+
+  userId String?
+  user   User?   @relation(fields: [userId], references: [id])
+
+  transfer Transfer?
+
+  ledgerEntries LedgerEntry[]
+
+  savingsGoalContribution SavingsGoalContribution?
+
+  loanRepayment LoanRepayment?
+
+  metadata Json?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([senderAccountId])
+  @@index([recipientAccountId])
+  @@index([userId])
+  @@index([status])
+  @@index([type])
+  @@index([createdAt])
+  @@index([cardId])
+}
+
+model Transfer {
+  id String @id @default(cuid())
+
+  authChallenges TransactionAuthChallenge[]
+
+  reference String @unique
+
+  idempotencyKey String @unique
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Restrict)
+
+  fromAccountId String
+  toAccountId   String
+
+  fromAccount Account @relation("OutgoingTransfers", fields: [fromAccountId], references: [id], onDelete: Restrict)
+  toAccount   Account @relation("IncomingTransfers", fields: [toAccountId], references: [id], onDelete: Restrict)
+
+  amount   Decimal @db.Decimal(19, 4)
+  currency String
+
+  description String?
+
+  status TransactionStatus @default(PENDING)
+
+  transactionId String?      @unique
+  transaction   Transaction? @relation(fields: [transactionId], references: [id], onDelete: Restrict)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([fromAccountId])
+  @@index([toAccountId])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model Session {
+  id String @id @default(cuid())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  tokenHash String @unique
+
+  expiresAt DateTime
+  revokedAt DateTime?
+
+  ipAddress String?
+  userAgent String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([expiresAt])
+  @@index([revokedAt])
+}
+
+model LedgerEntry {
+  id String @id @default(cuid())
+
+  transactionId String
+  transaction   Transaction @relation(fields: [transactionId], references: [id], onDelete: Restrict)
+
+  accountId String
+  account   Account @relation(fields: [accountId], references: [id], onDelete: Restrict)
+
+  direction LedgerEntryDirection
+
+  amount   Decimal @db.Decimal(19, 4)
+  currency String
+
+  balanceAfter Decimal @db.Decimal(19, 4)
+
+  createdAt DateTime @default(now())
+
+  @@index([transactionId])
+  @@index([accountId])
+  @@index([accountId, createdAt])
+}
+
+enum TransactionAuthMethod {
+  PASSWORD
+  PIN
+  OTP
+}
+
+model TransactionAuthChallenge {
+  id String @id @default(cuid())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  transferId String?
+  transfer   Transfer? @relation(fields: [transferId], references: [id], onDelete: Cascade)
+
+  method TransactionAuthMethod
+
+  challengeHash String @unique
+
+  expiresAt  DateTime
+  consumedAt DateTime?
+
+  attempts    Int @default(0)
+  maxAttempts Int @default(5)
+
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([transferId])
+  @@index([expiresAt])
+  @@index([consumedAt])
+}
+
+model SavingsGoalContribution {
+  id String @id @default(cuid())
+
+  goalId String
+  goal   SavingsGoal @relation(fields: [goalId], references: [id], onDelete: Restrict)
+
+  transactionId String @unique
+  transaction   Transaction @relation(fields: [transactionId], references: [id], onDelete: Restrict)
+
+  amount   Decimal @db.Decimal(19, 4)
+  currency String
+
+  createdAt DateTime @default(now())
+
+  @@index([goalId])
+  @@index([createdAt])
+}
+
+model Notification {
+  id String @id @default(cuid())
+
+  userId String
+  user   User @relation(fields: [userId], references: [id], onDelete: Restrict)
+
+  type String
+  title String
+  message String
+
+  readAt DateTime?
+
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([userId, readAt])
+  @@index([createdAt])
+}

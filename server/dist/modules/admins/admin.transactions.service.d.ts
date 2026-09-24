@@ -1,0 +1,71 @@
+export declare function getAdminTransactions(page: number, limit: number, status?: string, type?: string): Promise<{
+    transactions: {
+        amount: import("@prisma/client-runtime-utils").Decimal;
+        channel: import("../../generated/prisma/enums.js").TransactionChannel;
+        createdAt: Date;
+        currency: string;
+        description: string | null;
+        id: string;
+        recipientAccountId: string | null;
+        reference: string;
+        senderAccountId: string | null;
+        status: import("../../generated/prisma/enums.js").TransactionStatus;
+        type: import("../../generated/prisma/enums.js").TransactionType;
+        userId: string | null;
+    }[];
+    total: number;
+    page: number;
+    limit: number;
+    totalPages: number;
+}>;
+export declare function getAdminTransaction(transactionId: string): Promise<{
+    amount: import("@prisma/client-runtime-utils").Decimal;
+    channel: import("../../generated/prisma/enums.js").TransactionChannel;
+    createdAt: Date;
+    currency: string;
+    description: string | null;
+    id: string;
+    ledgerEntries: {
+        accountId: string;
+        amount: import("@prisma/client-runtime-utils").Decimal;
+        balanceAfter: import("@prisma/client-runtime-utils").Decimal;
+        createdAt: Date;
+        currency: string;
+        direction: import("../../generated/prisma/enums.js").LedgerEntryDirection;
+        id: string;
+    }[];
+    metadata: import("@prisma/client/runtime/client").JsonValue;
+    recipientAccountId: string | null;
+    reference: string;
+    senderAccountId: string | null;
+    status: import("../../generated/prisma/enums.js").TransactionStatus;
+    type: import("../../generated/prisma/enums.js").TransactionType;
+    updatedAt: Date;
+    userId: string | null;
+} | null>;
+export declare function createAdminTransfer(input: {
+    adminId: string;
+    fromAccountId?: string;
+    toAccountId: string;
+    amount: number;
+    currency: string;
+    description?: string;
+    idempotencyKey: string;
+}): Promise<{
+    id: string;
+    reference: string;
+    idempotencyKey: string | null;
+    type: import("../../generated/prisma/enums.js").TransactionType;
+    status: import("../../generated/prisma/enums.js").TransactionStatus;
+    amount: import("@prisma/client-runtime-utils").Decimal;
+    currency: string;
+    description: string | null;
+    channel: import("../../generated/prisma/enums.js").TransactionChannel;
+    cardId: string | null;
+    senderAccountId: string | null;
+    recipientAccountId: string | null;
+    userId: string | null;
+    metadata: import("@prisma/client/runtime/client").JsonValue | null;
+    createdAt: Date;
+    updatedAt: Date;
+}>;

@@ -1,0 +1,65 @@
+html {
+  background: #090b0f;
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #090b0f;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+  font-family:
+    Inter,
+    ui-sans-serif,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #356dff;
+  outline-offset: 2px;
+}
+
+::selection {
+  background: rgba(53, 109, 255, 0.35);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090b0f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #292f39;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #39414e;
+}

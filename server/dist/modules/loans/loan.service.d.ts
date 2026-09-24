@@ -1,0 +1,150 @@
+import { type LoanStatus } from "../../generated/prisma/client.js";
+export declare function createLoan(userId: string, accountId: string, amount: number, interestRate: number, termMonths: number, purpose?: string): Promise<{
+    accountId: string;
+    amount: import("@prisma/client-runtime-utils").Decimal;
+    amountRepaid: import("@prisma/client-runtime-utils").Decimal;
+    approvedAt: Date | null;
+    createdAt: Date;
+    currency: string;
+    disbursedAt: Date | null;
+    dueDate: Date | null;
+    id: string;
+    interestRate: import("@prisma/client-runtime-utils").Decimal;
+    purpose: string | null;
+    status: LoanStatus;
+    termMonths: number;
+    totalRepayment: import("@prisma/client-runtime-utils").Decimal;
+    updatedAt: Date;
+}>;
+export declare function getLoans(userId: string, page: number, limit: number, status?: LoanStatus): Promise<{
+    loans: {
+        accountId: string;
+        amount: import("@prisma/client-runtime-utils").Decimal;
+        amountRepaid: import("@prisma/client-runtime-utils").Decimal;
+        approvedAt: Date | null;
+        createdAt: Date;
+        currency: string;
+        disbursedAt: Date | null;
+        dueDate: Date | null;
+        id: string;
+        interestRate: import("@prisma/client-runtime-utils").Decimal;
+        purpose: string | null;
+        status: LoanStatus;
+        termMonths: number;
+        totalRepayment: import("@prisma/client-runtime-utils").Decimal;
+        updatedAt: Date;
+    }[];
+    total: number;
+}>;
+export declare function getLoan(userId: string, loanId: string): Promise<{
+    accountId: string;
+    amount: import("@prisma/client-runtime-utils").Decimal;
+    amountRepaid: import("@prisma/client-runtime-utils").Decimal;
+    approvedAt: Date | null;
+    createdAt: Date;
+    currency: string;
+    disbursedAt: Date | null;
+    dueDate: Date | null;
+    id: string;
+    interestRate: import("@prisma/client-runtime-utils").Decimal;
+    purpose: string | null;
+    status: LoanStatus;
+    termMonths: number;
+    totalRepayment: import("@prisma/client-runtime-utils").Decimal;
+    updatedAt: Date;
+} | null>;
+export declare function updateLoanStatus(loanId: string, status: Extract<LoanStatus, "APPROVED" | "REJECTED" | "CANCELLED" | "DEFAULTED">): Promise<{
+    accountId: string;
+    amount: import("@prisma/client-runtime-utils").Decimal;
+    amountRepaid: import("@prisma/client-runtime-utils").Decimal;
+    approvedAt: Date | null;
+    createdAt: Date;
+    currency: string;
+    disbursedAt: Date | null;
+    dueDate: Date | null;
+    id: string;
+    interestRate: import("@prisma/client-runtime-utils").Decimal;
+    purpose: string | null;
+    status: LoanStatus;
+    termMonths: number;
+    totalRepayment: import("@prisma/client-runtime-utils").Decimal;
+    updatedAt: Date;
+}>;
+export declare function disburseLoan(userId: string, loanId: string, idempotencyKey: string): Promise<{
+    transaction: {
+        amount: import("@prisma/client-runtime-utils").Decimal;
+        createdAt: Date;
+        currency: string;
+        id: string;
+        reference: string;
+        status: import("../../generated/prisma/enums.js").TransactionStatus;
+    };
+    loan: {
+        accountId: string;
+        amount: import("@prisma/client-runtime-utils").Decimal;
+        amountRepaid: import("@prisma/client-runtime-utils").Decimal;
+        approvedAt: Date | null;
+        createdAt: Date;
+        currency: string;
+        disbursedAt: Date | null;
+        dueDate: Date | null;
+        id: string;
+        interestRate: import("@prisma/client-runtime-utils").Decimal;
+        purpose: string | null;
+        status: LoanStatus;
+        termMonths: number;
+        totalRepayment: import("@prisma/client-runtime-utils").Decimal;
+        updatedAt: Date;
+    };
+}>;
+export declare function repayLoan(userId: string, loanId: string, sourceAccountId: string, amount: number, idempotencyKey: string): Promise<{
+    transactionId: string;
+    repayment: {
+        amount: import("@prisma/client-runtime-utils").Decimal;
+        currency: string;
+        id: string;
+        loanId: string;
+        status: import("../../generated/prisma/enums.js").LoanRepaymentStatus;
+    };
+    idempotent: boolean;
+    transaction?: never;
+    loan?: never;
+} | {
+    transactionId?: never;
+    transaction: {
+        amount: import("@prisma/client-runtime-utils").Decimal;
+        createdAt: Date;
+        currency: string;
+        id: string;
+        reference: string;
+        status: import("../../generated/prisma/enums.js").TransactionStatus;
+    };
+    repayment: {
+        amount: import("@prisma/client-runtime-utils").Decimal;
+        createdAt: Date;
+        currency: string;
+        id: string;
+        loanId: string;
+        paidAt: Date | null;
+        status: import("../../generated/prisma/enums.js").LoanRepaymentStatus;
+        transactionId: string | null;
+    };
+    loan: {
+        accountId: string;
+        amount: import("@prisma/client-runtime-utils").Decimal;
+        amountRepaid: import("@prisma/client-runtime-utils").Decimal;
+        approvedAt: Date | null;
+        createdAt: Date;
+        currency: string;
+        disbursedAt: Date | null;
+        dueDate: Date | null;
+        id: string;
+        interestRate: import("@prisma/client-runtime-utils").Decimal;
+        purpose: string | null;
+        status: LoanStatus;
+        termMonths: number;
+        totalRepayment: import("@prisma/client-runtime-utils").Decimal;
+        updatedAt: Date;
+    };
+    idempotent: boolean;
+}>;
