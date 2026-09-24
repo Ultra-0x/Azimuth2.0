@@ -117,10 +117,6 @@ export async function loginUser(
     throw new Error("This account is not available for login.");
   }
 
-  if (!user.emailVerifiedAt) {
-  throw new Error("Email verification is required before login.");
-}
-
   if (user.lockedUntil && user.lockedUntil > new Date()) {
     throw new Error(
       "Too many failed login attempts. Please try again later.",
