@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { login } from '../services/auth'
 import { useAuth } from '../context/AuthContext'
 
@@ -66,14 +66,21 @@ function LoginPage() {
     <main className="auth-page">
       <div className="auth-shell">
         <section className="auth-brand-panel">
-          <div className="auth-brand">
-            <div className="brand-mark">A</div>
+          <button
+            type="button"
+            className="auth-brand-link"
+            onClick={() => navigate('/')}
+            aria-label="Go to Azimuth home"
+          >
+            <div className="auth-brand">
+              <div className="brand-mark">A</div>
 
-            <div>
-              <strong>AZIMUTH</strong>
-              <span>PRIVATE BANKING</span>
+              <div>
+                <strong>AZIMUTH</strong>
+                <span>PRIVATE BANKING</span>
+              </div>
             </div>
-          </div>
+          </button>
 
           <div className="auth-brand-content">
             <span className="eyebrow">AZIMUTH 2.0</span>
@@ -183,8 +190,8 @@ function LoginPage() {
             </form>
 
             <p className="auth-footer">
-              Your session is protected using secure,
-              HTTP-only authentication.
+              Need an account?{' '}
+              <Link to="/register">Create one</Link>
             </p>
           </div>
         </section>

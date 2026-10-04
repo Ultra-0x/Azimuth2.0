@@ -141,6 +141,16 @@ function DashboardPage() {
 
   const firstName = user?.firstName || 'there'
 
+  const getGreeting = () => {
+    const currentHour = new Date().getHours()
+
+    if (currentHour < 12) return 'Good morning'
+    if (currentHour < 17) return 'Good afternoon'
+    return 'Good evening'
+  }
+
+  const greeting = getGreeting()
+
   const formattedDate = new Date().toLocaleDateString('en-US', {
     weekday: 'long',
     month: 'long',
@@ -221,7 +231,7 @@ function DashboardPage() {
           </div>
 
           <h1>
-            Good afternoon,{' '}
+            {greeting},{' '}
             <span>{firstName}.</span>
           </h1>
 

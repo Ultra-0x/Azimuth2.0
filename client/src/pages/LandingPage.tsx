@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../App.css";
 
 export default function LandingPage() {
   const navigate = useNavigate();
@@ -237,7 +238,7 @@ export default function LandingPage() {
       <section className="landing-hero">
         <div className="landing-hero-copy">
           <span className="landing-eyebrow">
-            THE NEW AZIMUTH
+            THE NEW BANKING SYSTEM THAT WORKS FOR JUST YOU!
           </span>
 
           <h1>
@@ -347,15 +348,81 @@ export default function LandingPage() {
         </p>
       </section>
 
+      <section className="landing-photo-showcase" aria-label="Banking team reviewing financial information">
+        <div
+          className="landing-photo-panel"
+          aria-label="Banking team reviewing documents and financial information"
+          role="img"
+        />
+
+        <div className="landing-video-context" aria-hidden="true">
+          <div className="landing-video-header">
+            <span className="landing-video-pill">LIVE DATA</span>
+            <span className="landing-video-status">
+              <i />
+              SECURE
+            </span>
+          </div>
+
+          <div className="landing-video-grid">
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+          </div>
+
+          <div className="landing-video-metrics">
+            <div>
+              <small>Payments</small>
+              <strong>2,184</strong>
+            </div>
+
+            <div>
+              <small>Funds</small>
+              <strong>98.4%</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="landing-feature-band" aria-label="Premium banking highlights">
+        <div className="landing-feature-band-card">
+          <span className="landing-eyebrow">PRIVATE BANKING</span>
+          <strong>Built for real life.</strong>
+          <small>Secure access, clear visibility, and smarter money movement.</small>
+        </div>
+
+        <div className="landing-feature-band-item">
+          <strong>24/7</strong>
+          <span>Account access</span>
+        </div>
+
+        <div className="landing-feature-band-item">
+          <strong>2.1s</strong>
+          <span>Transfer speed</span>
+        </div>
+
+        <div className="landing-feature-band-item">
+          <strong>99.98%</strong>
+          <span>Platform uptime</span>
+        </div>
+
+        <div className="landing-feature-band-item">
+          <strong>Zero-fee</strong>
+          <span>Internal movement</span>
+        </div>
+      </section>
+
       <section className="landing-features">
         <article
           id="accounts"
           className="landing-feature-card landing-feature-large"
         >
-          <span className="landing-feature-number">
-            01
-          </span>
-
           <div>
             <span className="landing-feature-icon">
               ◌
@@ -370,6 +437,11 @@ export default function LandingPage() {
             </p>
           </div>
 
+          <div className="landing-feature-meta">
+            <span>Private banking</span>
+            <strong>24/7 access</strong>
+          </div>
+
           <span className="landing-feature-arrow">
             ↗
           </span>
@@ -379,10 +451,6 @@ export default function LandingPage() {
           id="transfers"
           className="landing-feature-card"
         >
-          <span className="landing-feature-number">
-            02
-          </span>
-
           <div>
             <span className="landing-feature-icon">
               ↗
@@ -396,6 +464,11 @@ export default function LandingPage() {
             </p>
           </div>
 
+          <div className="landing-feature-meta">
+            <span>Instant</span>
+            <strong>SECURE</strong>
+          </div>
+
           <span className="landing-feature-arrow">
             ↗
           </span>
@@ -405,10 +478,6 @@ export default function LandingPage() {
           id="savings"
           className="landing-feature-card"
         >
-          <span className="landing-feature-number">
-            03
-          </span>
-
           <div>
             <span className="landing-feature-icon">
               ◇
@@ -422,6 +491,11 @@ export default function LandingPage() {
             </p>
           </div>
 
+          <div className="landing-feature-meta">
+            <span>Goal-led</span>
+            <strong>+4.8% avg.</strong>
+          </div>
+
           <span className="landing-feature-arrow">
             ↗
           </span>
@@ -431,10 +505,6 @@ export default function LandingPage() {
           id="cards"
           className="landing-feature-card"
         >
-          <span className="landing-feature-number">
-            04
-          </span>
-
           <div>
             <span className="landing-feature-icon">
               □
@@ -446,6 +516,11 @@ export default function LandingPage() {
               Keep your cards under control with
               simple, immediate account access.
             </p>
+          </div>
+
+          <div className="landing-feature-meta">
+            <span>Premium</span>
+            <strong>Travel ready</strong>
           </div>
 
           <span className="landing-feature-arrow">
@@ -657,12 +732,25 @@ export default function LandingPage() {
             Support
           </button>
 
-          <button type="button">
+          <button
+            type="button"
+            onClick={() => navigate("/privacy")}
+          >
             Privacy
           </button>
 
-          <button type="button">
+          <button
+            type="button"
+            onClick={() => navigate("/terms")}
+          >
             Terms
+          </button>
+
+          <button
+            type="button"
+            onClick={() => navigate("/copyright-policy")}
+          >
+            Copyright policy
           </button>
         </div>
 

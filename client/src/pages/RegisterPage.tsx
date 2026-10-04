@@ -75,14 +75,21 @@ function RegisterPage() {
     <main className="auth-page">
       <div className="auth-shell">
         <section className="auth-brand-panel">
-          <div className="auth-brand">
-            <div className="brand-mark">A</div>
+          <button
+            type="button"
+            className="auth-brand-link"
+            onClick={() => navigate('/')}
+            aria-label="Go to Azimuth home"
+          >
+            <div className="auth-brand">
+              <div className="brand-mark">A</div>
 
-            <div>
-              <strong>AZIMUTH</strong>
-              <span>PRIVATE BANKING</span>
+              <div>
+                <strong>AZIMUTH</strong>
+                <span>PRIVATE BANKING</span>
+              </div>
             </div>
-          </div>
+          </button>
 
           <div className="auth-brand-content">
             <span className="eyebrow">AZIMUTH 2.0</span>

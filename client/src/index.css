@@ -1,13 +1,14 @@
 html {
-  background: #090b0f;
-  color-scheme: dark;
+  background: #f3eee7;
+  color-scheme: light;
 }
 
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: #090b0f;
+  background: #f3eee7;
+  color: #1d1815;
 }
 
 body,
@@ -37,13 +38,13 @@ a:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-  outline: 2px solid #356dff;
+  outline: 2px solid #6a5146;
   outline-offset: 2px;
 }
 
 ::selection {
-  background: rgba(53, 109, 255, 0.35);
-  color: #fff;
+  background: rgba(106, 81, 70, 0.3);
+  color: #1d1815;
 }
 
 ::-webkit-scrollbar {
@@ -52,14 +53,14 @@ select:focus-visible {
 }
 
 ::-webkit-scrollbar-track {
-  background: #090b0f;
+  background: #1b1715;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #292f39;
+  background: #7a6258;
   border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #39414e;
+  background: #8b6e61;
 }
