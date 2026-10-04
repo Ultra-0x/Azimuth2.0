@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
+import TawkTo from "./components/TawkTo";
 import CustomerLayout from "./layouts/CustomerLayout";
 import DashboardPage from "./pages/DashboardPage";
 import AccountsPage from "./pages/AccountsPage";
@@ -42,11 +43,14 @@ function AdminRoute({
 
 function App() {
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={<LandingPage />}
-      />
+    <>
+      <TawkTo />
+
+      <Routes>
+        <Route
+          path="/"
+          element={<LandingPage />}
+        />
 
       <Route
         path="/privacy"
@@ -228,6 +232,7 @@ function App() {
         element={<Navigate to="/login" replace />}
       />
     </Routes>
+    </>
   );
 }
 
