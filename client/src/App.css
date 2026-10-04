@@ -19881,12 +19881,39 @@ button {
   .landing-features,
   .landing-dashboard-section,
   .landing-security,
-  .landing-footer {
+  .landing-footer,
+  .landing-feature-band {
     width: min(100% - 32px, 560px);
   }
 
   .landing-header {
     height: 70px;
+  }
+
+  .landing-feature-band {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .landing-feature-band-card,
+  .landing-feature-band-item {
+    min-height: auto;
+    padding: 18px 18px;
+    border-radius: 18px;
+    box-shadow: none;
+  }
+
+  .landing-feature-band-card {
+    background: linear-gradient(135deg, rgba(43, 37, 34, 0.96), rgba(62, 48, 41, 0.9));
+  }
+
+  .landing-feature-band-item {
+    background: rgba(255, 255, 255, 0.66);
+  }
+
+  .landing-feature-band-card small {
+    max-width: none;
   }
 
   .landing-nav > button:first-child,
