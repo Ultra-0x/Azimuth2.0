@@ -1769,18 +1769,19 @@ button {
   display: flex;
   align-items: baseline;
   margin-top: 7px;
-  color: var(--az-porcelain);
+  color: var(--az-blue);
   font-size: clamp(42px, 5vw, 64px);
   line-height: 1;
   letter-spacing: -0.055em;
-  font-weight: 650;
+  font-weight: 700;
+  text-shadow: 0 1px 0 rgba(43, 37, 34, 0.08);
 }
 
 .balance-hero-value > span {
   margin-right: 4px;
-  color: #8e98a9;
+  color: var(--az-blue);
   font-size: 0.55em;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .balance-hero-main p {
@@ -3767,7 +3768,7 @@ button {
 .premium-account-card-icon.current {
   background: rgba(106, 81, 70, 0.1);
   border-color: rgba(106, 81, 70, 0.2);
-  color: #6f91ff;
+  color: var(--az-blue);
 }
 
 .premium-account-card-icon.savings {
@@ -3879,10 +3880,11 @@ button {
 }
 
 .premium-account-card-middle > div:first-child strong {
-  color: #f4f5f7;
+  color: var(--az-blue);
   font-size: 23px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.035em;
+  text-shadow: 0 1px 0 rgba(43, 37, 34, 0.08);
 }
 
 .premium-account-card-footer {
@@ -4202,7 +4204,7 @@ button {
 .account-detail-icon.current {
   border-color: rgba(106, 81, 70, 0.2);
   background: rgba(106, 81, 70, 0.09);
-  color: #6f91ff;
+  color: var(--az-blue);
 }
 
 .account-detail-icon.savings {
@@ -19047,8 +19049,8 @@ button {
 .landing-card-balance strong {
   font-size: clamp(26px, 3vw, 39px);
   letter-spacing: -0.045em;
-  font-weight: 700;
-  color: #f7f0ea;
+  font-weight: 800;
+  color: #2a201d;
 }
 
 .landing-card-bottom {
@@ -19085,8 +19087,8 @@ button {
 .landing-floating-balance strong {
   font-size: 20px;
   letter-spacing: -0.03em;
-  color: #3a2b25;
-  font-weight: 700;
+  color: #2d221f;
+  font-weight: 800;
 }
 
 .landing-floating-balance span {
@@ -19559,8 +19561,8 @@ button {
 .landing-preview-balance strong {
   font-size: 36px;
   letter-spacing: -0.05em;
-  color: #382b25;
-  font-weight: 700;
+  color: #2d221f;
+  font-weight: 800;
 }
 
 .landing-preview-balance span {
@@ -19592,8 +19594,8 @@ button {
 
 .landing-preview-accounts strong {
   font-size: 12px;
-  color: #382b25;
-  font-weight: 700;
+  color: #2d221f;
+  font-weight: 800;
 }
 
 .landing-preview-transactions {
@@ -19643,7 +19645,8 @@ button {
 
 .landing-preview-transaction div strong {
   font-size: 10px;
-  color: #382b25;
+  color: #2d221f;
+  font-weight: 800;
 }
 
 .landing-preview-transaction div small {
@@ -19653,7 +19656,8 @@ button {
 
 .landing-preview-transaction > strong {
   font-size: 10px;
-  color: #382b25;
+  color: #2d221f;
+  font-weight: 800;
 }
 
 /* SECURITY */
