@@ -238,19 +238,19 @@ export default function LandingPage() {
       <section className="landing-hero">
         <div className="landing-hero-copy">
           <span className="landing-eyebrow">
-            THE NEW BANKING SYSTEM THAT WORKS FOR JUST YOU!
+            PRIVATE BANKING
           </span>
 
           <h1>
-            Banking that moves
+            Banking designed
             <br />
-            <em>with you.</em>
+            <em>for real life.</em>
           </h1>
 
           <p>
-            A modern banking experience built around
-            clarity, control and the way you actually
-            manage your money.
+            Clearer visibility. Smarter movement. A calmer
+            way to manage your money from everyday spending
+            to long-term goals.
           </p>
 
           <div className="landing-hero-actions">
@@ -335,16 +335,17 @@ export default function LandingPage() {
           </span>
 
           <h2>
-            Everything you need.
+            A better way to
             <br />
-            Nothing you don't.
+            keep money moving.
           </h2>
         </div>
 
         <p>
           From everyday spending to long-term goals,
-          Azimuth brings your financial life together
-          in one beautifully considered experience.
+          Azimuth brings your financial life together in
+          one thoughtful experience built for clarity,
+          control, and momentum.
         </p>
       </section>
 

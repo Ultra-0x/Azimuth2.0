@@ -18483,20 +18483,42 @@ button {
 .landing-page {
   min-height: 100vh;
   overflow-x: hidden;
+  position: relative;
   background:
     radial-gradient(
-      circle at 78% 16%,
-      rgba(106, 81, 70, 0.08),
-      transparent 28%
-    ),
-    radial-gradient(
-      circle at 18% 42%,
-      rgba(106, 81, 70, 0.05),
+      circle at 82% 6%,
+      rgba(101, 75, 62, 0.12),
       transparent 24%
     ),
-    #efe7df;
+    radial-gradient(
+      circle at 10% 40%,
+      rgba(101, 75, 62, 0.05),
+      transparent 18%
+    ),
+    linear-gradient(180deg, #f5efe9 0%, #f8f4f1 30%, #f1e8e1 100%);
   color: var(--az-text);
   padding-top: 18px;
+}
+
+.landing-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.28), transparent 28%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(70, 50, 39, 0.012),
+      rgba(70, 50, 39, 0.012) 1px,
+      transparent 1px,
+      transparent 140px
+    );
+  pointer-events: none;
+}
+
+.landing-page > * {
+  position: relative;
+  z-index: 1;
 }
 
 .landing-header {
@@ -18512,9 +18534,9 @@ button {
   z-index: 30;
   border: 1px solid rgba(70, 50, 39, 0.08);
   border-radius: 22px;
-  background: rgba(252, 247, 242, 0.72);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(250, 245, 240, 0.75);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   box-shadow: 0 18px 42px rgba(51, 36, 28, 0.08);
 }
 
@@ -18685,8 +18707,8 @@ button {
   max-width: 680px;
   margin: 24px 0 22px;
   font-size: clamp(54px, 6.3vw, 94px);
-  line-height: 0.94;
-  letter-spacing: -0.065em;
+  line-height: 0.9;
+  letter-spacing: -0.07em;
   font-weight: 500;
   color: var(--az-text);
 }
@@ -18697,11 +18719,11 @@ button {
 }
 
 .landing-hero-copy > p {
-  max-width: 520px;
+  max-width: 540px;
   margin: 0;
   color: var(--az-muted);
   font-size: 15px;
-  line-height: 1.75;
+  line-height: 1.8;
 }
 
 .landing-hero-actions {
@@ -19119,7 +19141,7 @@ button {
 .landing-final-cta h2 {
   margin: 20px 0 0;
   font-size: clamp(42px, 4.7vw, 70px);
-  line-height: 0.94;
+  line-height: 0.92;
   letter-spacing: -0.06em;
   font-weight: 500;
 }
@@ -19157,34 +19179,52 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: linear-gradient(135deg, rgba(43, 37, 34, 0.95), rgba(88, 69, 61, 0.82));
+  min-height: 172px;
+  background: linear-gradient(135deg, rgba(43, 37, 34, 0.96), rgba(76, 58, 51, 0.88));
   color: #fff;
+  box-shadow: 0 28px 48px rgba(43, 37, 34, 0.1);
+}
+
+.landing-feature-band-card .landing-eyebrow {
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.18em;
+}
+
+.landing-feature-band-card .landing-eyebrow::before {
+  background: rgba(255, 255, 255, 0.72);
 }
 
 .landing-feature-band-card strong {
   display: block;
-  margin-top: 8px;
+  margin-top: 12px;
   font-size: clamp(21px, 2.1vw, 30px);
-  letter-spacing: -0.045em;
+  letter-spacing: -0.05em;
+  line-height: 1.08;
+  color: #fff;
 }
 
 .landing-feature-band-card small {
-  margin-top: 8px;
-  color: rgba(255, 255, 255, 0.7);
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.72);
   font-size: 11px;
-  line-height: 1.6;
+  line-height: 1.7;
+  max-width: 33ch;
 }
 
 .landing-feature-band-item {
   display: grid;
-  gap: 8px;
-  min-height: 120px;
+  align-content: center;
+  gap: 10px;
+  min-height: 172px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(246, 241, 235, 0.86));
+  border-color: rgba(43, 37, 34, 0.08);
 }
 
 .landing-feature-band-item strong {
   font-size: clamp(20px, 1.9vw, 32px);
   letter-spacing: -0.05em;
   color: var(--az-text);
+  line-height: 1;
 }
 
 .landing-feature-band-item span {
@@ -19192,6 +19232,7 @@ button {
   font-size: 10px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  line-height: 1.5;
 }
 
 .landing-features {
@@ -19216,7 +19257,7 @@ button {
   background:
     linear-gradient(
       165deg,
-      rgba(255, 255, 255, 0.92),
+      rgba(255, 255, 255, 0.95),
       rgba(244, 236, 228, 1)
     );
   box-shadow:
