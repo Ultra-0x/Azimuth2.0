@@ -18832,7 +18832,8 @@ button {
     ),
     url("https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=1200&q=80");
   background-size: cover;
-  background-position: center;
+  background-position: center center;
+  background-repeat: no-repeat;
   box-shadow: 0 28px 70px rgba(43, 37, 34, 0.16);
 }
 
@@ -18970,12 +18971,13 @@ button {
 }
 
 .landing-video-metrics small {
-  color: var(--az-muted);
+  color: rgba(43, 37, 34, 0.7);
   font-size: 7px;
   letter-spacing: 0.14em;
 }
 
 .landing-video-metrics strong {
+  color: var(--az-text);
   font-size: 14px;
   letter-spacing: -0.04em;
 }
@@ -19036,7 +19038,7 @@ button {
 }
 
 .landing-card-balance small {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.78);
   font-size: 8px;
   letter-spacing: 0.14em;
 }
@@ -19044,12 +19046,12 @@ button {
 .landing-card-balance strong {
   font-size: clamp(26px, 3vw, 39px);
   letter-spacing: -0.045em;
-  font-weight: 500;
+  font-weight: 600;
   color: #fff;
 }
 
 .landing-card-bottom {
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.86);
   font-family: monospace;
   font-size: 10px;
   letter-spacing: 0.1em;
@@ -19074,7 +19076,7 @@ button {
 }
 
 .landing-floating-balance small {
-  color: var(--az-muted);
+  color: rgba(43, 37, 34, 0.72);
   font-size: 8px;
   letter-spacing: 0.12em;
 }
@@ -19082,7 +19084,8 @@ button {
 .landing-floating-balance strong {
   font-size: 20px;
   letter-spacing: -0.03em;
-  color: var(--az-text);
+  color: #1d1a18;
+  font-weight: 700;
 }
 
 .landing-floating-balance span {
@@ -19119,7 +19122,7 @@ button {
 }
 
 .landing-floating-transfer small {
-  color: var(--az-muted);
+  color: rgba(43, 37, 34, 0.7);
   font-size: 8px;
 }
 
@@ -19548,13 +19551,15 @@ button {
 }
 
 .landing-preview-balance small {
-  color: var(--az-muted);
+  color: rgba(43, 37, 34, 0.72);
   font-size: 9px;
 }
 
 .landing-preview-balance strong {
   font-size: 36px;
   letter-spacing: -0.05em;
+  color: #1d1a18;
+  font-weight: 700;
 }
 
 .landing-preview-balance span {
@@ -19578,7 +19583,7 @@ button {
 
 .landing-preview-accounts small {
   display: block;
-  color: var(--az-muted);
+  color: rgba(43, 37, 34, 0.7);
   font-size: 7px;
   letter-spacing: 0.1em;
   margin-bottom: 8px;
@@ -19586,6 +19591,8 @@ button {
 
 .landing-preview-accounts strong {
   font-size: 12px;
+  color: #1d1a18;
+  font-weight: 700;
 }
 
 .landing-preview-transactions {
@@ -19635,15 +19642,17 @@ button {
 
 .landing-preview-transaction div strong {
   font-size: 10px;
+  color: #1d1a18;
 }
 
 .landing-preview-transaction div small {
-  color: var(--az-muted);
+  color: rgba(43, 37, 34, 0.7);
   font-size: 8px;
 }
 
 .landing-preview-transaction > strong {
   font-size: 10px;
+  color: #1d1a18;
 }
 
 /* SECURITY */
@@ -19882,12 +19891,30 @@ button {
   .landing-dashboard-section,
   .landing-security,
   .landing-footer,
-  .landing-feature-band {
+  .landing-feature-band,
+  .landing-photo-showcase {
     width: min(100% - 32px, 560px);
   }
 
   .landing-header {
     height: 70px;
+  }
+
+  .landing-photo-showcase {
+    min-height: 360px;
+    margin: 10px auto 30px;
+  }
+
+  .landing-photo-panel {
+    inset: 0;
+    border-radius: 20px;
+    background-position: center center;
+    background-size: cover;
+    min-height: 320px;
+  }
+
+  .landing-photo-showcase .landing-photo-panel {
+    inset: 0;
   }
 
   .landing-feature-band {
